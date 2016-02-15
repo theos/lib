@@ -13,4 +13,7 @@ There is no particular license on this repo. Binaries in this repo come from man
 * librocketbootstrap: Unknown - used with permission
 
 ### SaurikIT
-* Cydia Substrate: Closed source - stub binary used instead. Licensed under the Public Domain via [Unlicense](http://unlicense.org/).
+* Cydia Substrate: Licensing is rather strange and unclear here.
+** As of approximately version 0.9.3997, Cydia Substrate became closed source. It was previously GNU GPL v3.
+** The binary provided here is a stub – it only contains symbols. This is licensed under the Public Domain via [Unlicense](http://unlicense.org/).
+** Header is taken from the Substrate Git repo at commit 64605bb. It is unclear whether any newer header is actually open source despite having the GPL v3 notice at the start of the file.
