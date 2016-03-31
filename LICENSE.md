@@ -4,6 +4,9 @@ There is no particular license on this repo. This repo hosts files in a plain te
 The licenses of each library on this repo are listed as follows.
 
 ## By Author
+### ashikase
+* TechSupport: [GNU LGPL v3, Apache License 2](https://github.com/ashikase/TechSupport/blob/master/LICENSE)
+
 ### HASHBANG Productions
 * Cephei: [Apache License, version 2.0](https://github.com/hbang/libcephei/blob/master/LICENSE.md)
 * Opener: [Apache License, version 2.0](https://github.com/hbang/libopener/blob/master/LICENSE.md)
