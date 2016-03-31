@@ -1,0 +1,21 @@
+---
+archs:           [ armv7, arm64 ]
+platform:        ios
+install-name:    /Library/Frameworks/CepheiPrefs.framework/CepheiPrefs
+current-version: 0.0.0
+compatibility-version: 0.0.0
+exports:
+  - archs:            [ armv7, arm64 ]
+    symbols:          [ _animateBarTintColor,
+                        _changedStatusBarStyle, _globalBundle,
+                        _previousStatusBarStyle, _translucentNavigationBar ]
+    objc-classes:     [ HBAboutListController,
+                        HBAppearanceSettings, HBDemoAboutListController,
+                        HBDemoRootListController, HBDiscreteSliderTableCell,
+                        HBImageTableCell, HBInitialsLinkTableCell,
+                        HBLinkTableCell, HBListController,
+                        HBListItemsController, HBPackageNameHeaderCell,
+                        HBRootListController, HBSpinnerTableCell,
+                        HBStepperTableCell, HBSupportController,
+                        HBTintedTableCell, HBTwitterCell ]
+...

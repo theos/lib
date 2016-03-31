@@ -1,8 +1,0 @@
-# track all dylibs under LFS
-*.dylib filter=lfs diff=lfs merge=lfs -text
-
-# frameworks make things a little hard…
-Cephei.framework/Cephei filter=lfs diff=lfs merge=lfs -text
-CepheiPrefs.framework/CepheiPrefs filter=lfs diff=lfs merge=lfs -text
-Opener.framework/Opener filter=lfs diff=lfs merge=lfs -text
-CydiaSubstrate.framework/CydiaSubstrate filter=lfs diff=lfs merge=lfs -text
