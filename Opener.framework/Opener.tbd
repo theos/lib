@@ -7,6 +7,6 @@ compatibility-version: 0.0.0
 exports:
   - archs:            [ armv7, arm64 ]
     symbols:          [ _isOverriding ]
-    objc-classes:     [ HBLOHandler,
-                        HBLOHandlerController, HBLibOpener ]
+    objc-classes:     [ _HBLOHandler,
+                        _HBLOHandlerController, _HBLibOpener ]
 ...

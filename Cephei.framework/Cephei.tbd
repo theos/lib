@@ -12,5 +12,5 @@ exports:
                         __CFPreferencesCopyMultipleWithContainer, __CFPreferencesCopyValueWithContainer,
                         __CFPreferencesSetValueWithContainer, __CFPreferencesSynchronizeWithContainer,
                         _globalBundle ]
-    objc-classes:     [ HBPreferences ]
+    objc-classes:     [ _HBPreferences ]
 ...

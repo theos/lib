@@ -14,8 +14,8 @@ exports:
                         _ALSectionDescriptorItemsKey, _ALSectionDescriptorPredicateKey,
                         _ALSectionDescriptorSuppressHiddenAppsKey, _ALSectionDescriptorTitleKey,
                         _ALSectionDescriptorVisibilityPredicateKey ]
-    objc-classes:     [ ALApplicationList,
-                        ALApplicationLoadingTableViewCell, ALApplicationTableDataSource,
-                        ALCheckCell, ALDisclosureIndicatedCell,
-                        ALSwitchCell, ALValueCell ]
+    objc-classes:     [ _ALApplicationList,
+                        _ALApplicationLoadingTableViewCell, _ALApplicationTableDataSource,
+                        _ALCheckCell, _ALDisclosureIndicatedCell,
+                        _ALSwitchCell, _ALValueCell ]
 ...

@@ -10,5 +10,5 @@ exports:
                         _FSSwitchPanelSwitchStateChangedNotification, _FSSwitchPanelSwitchWillOpenURLNotification,
                         _FSSwitchPanelSwitchesChangedNotification, _FSSwitchStateFromNSString,
                         _NSStringFromFSSwitchState ]
-    objc-classes:     [ FSSwitchPanel ]
+    objc-classes:     [ _FSSwitchPanel ]
 ...
