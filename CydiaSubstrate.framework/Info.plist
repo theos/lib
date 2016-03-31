@@ -3,24 +3,22 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>Opener</string>
+	<string>CydiaSubstrate</string>
+	<key>CFBundleGetInfoString</key>
+	<string>Cydia Substrate, SaurikIT LLC</string>
 	<key>CFBundleIdentifier</key>
-	<string>ws.hbang.libopener</string>
+	<string>com.saurik.CydiaSubstate</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Opener</string>
+	<string>Cydia Substrate</string>
 	<key>CFBundlePackageType</key>
-	<string>BNDL</string>
+	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>0.9</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
-	<key>DTPlatformName</key>
-	<string>iphoneos</string>
 </dict>
 </plist>
