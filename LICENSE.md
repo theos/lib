@@ -5,7 +5,7 @@ The licenses of each library on this repo are listed as follows.
 
 ## By Author
 ### ashikase
-* TechSupport: [GNU LGPL v3, Apache License 2](https://github.com/ashikase/TechSupport/blob/master/LICENSE)
+* TechSupport: [GNU LGPL, version 3.0, Apache License, version 2.0](https://github.com/ashikase/TechSupport/blob/master/LICENSE)
 
 ### HASHBANG Productions
 * Cephei: [Apache License, version 2.0](https://github.com/hbang/libcephei/blob/master/LICENSE.md)
@@ -13,11 +13,12 @@ The licenses of each library on this repo are listed as follows.
 
 ### Ryan Petrich
 * libactivator: Closed source - used with permission
-* libapplist: [GNU Lesser General Public License, version 2.1](https://github.com/rpetrich/AppList/blob/master/LICENSE)
-* libflipswitch: [GNU Lesser General Public License, version 2.1](https://github.com/a3tweaks/Flipswitch/blob/master/LICENSE)
+* libapplist: [GNU LGPL, version 2.1](https://github.com/rpetrich/AppList/blob/master/LICENSE)
+* libflipswitch: [GNU LGPL, version 2.1](https://github.com/a3tweaks/Flipswitch/blob/master/LICENSE)
 * librocketbootstrap: Unknown - used with permission
 
 ### SaurikIT
+* Cycript: [GNU AGPL, version 3.0](http://gitweb.saurik.com/cycript.git/blob/HEAD:/COPYING)
 * Cydia Substrate: Licensing is rather strange and unclear here.
     * As of approximately version 0.9.3997, Cydia Substrate became closed source. It was previously GNU GPL v3.
     * The header provided here is taken from Cydia Substrate 0.9.4001 (February 2013) and has a comment that indicates that it is licensed under [GNU LGPL v3](CydiaSubstrate.framework/Headers/CydiaSubstrate.h).
