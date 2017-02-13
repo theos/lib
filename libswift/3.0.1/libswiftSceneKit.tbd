@@ -1,7 +1,7 @@
 ---
 archs:           [ armv7, armv7s, arm64 ]
 platform:        ios
-install-name:    '/var/lib/libswift//libswiftSceneKit.dylib'
+install-name:    '/var/lib/libswift/3.0.1/libswiftSceneKit.dylib'
 current-version: 0.0
 compatibility-version: 0.0
 exports:         
