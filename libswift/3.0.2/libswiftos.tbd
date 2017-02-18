@@ -1,7 +1,7 @@
 ---
 archs:           [ armv7, armv7s, arm64 ]
 platform:        ios
-install-name:    '/var/lib/libswift/3.0.2/libswiftos.dylib'
+install-name:    /var/lib/libswift/3.0.2/libswiftos.dylib
 current-version: 0.0
 compatibility-version: 0.0
 exports:         
