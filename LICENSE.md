@@ -26,6 +26,7 @@ The licenses of each library on this repo are listed as follows.
 
 ### Apple
 * Swift: [Apache License, version 2.0](https://swift.org/LICENSE.txt)
+    * The .tbd files in `libswift/*` are modifications of .dylib files in the open source Swift toolchains
 
 ### Other
 Files in this repo that aren’t copied or generated from elsewhere are released into the Public Domain.
