@@ -1,0 +1,64 @@
+---
+archs:           [ armv7, armv7s, arm64 ]
+platform:        ios
+install-name:    /var/lib/libswift/4.0/libswiftCallKit.dylib
+current-version: 0.0
+compatibility-version: 0.0
+exports:         
+  - archs:           [ armv7, armv7s ]
+    symbols:         [ ' stub helpers' ]
+    weak-def-symbols: [ ___swift_memcpy4_4, ___swift_memcpy_array4_4, ___swift_memmove_array4_4 ]
+  - archs:           [ arm64 ]
+    weak-def-symbols: [ ___swift_memcpy8_8, ___swift_memcpy_array8_8, ___swift_memmove_array8_8 ]
+  - archs:           [ armv7, armv7s, arm64 ]
+    symbols:         [ __T0So23CXProviderConfigurationC7CallKitE20supportedHandleTypess3SetVySo8CXHandleC0F4TypeOGfmytfU_, 
+                       __T0So23CXProviderConfigurationC7CallKitE20supportedHandleTypess3SetVySo8CXHandleC0F4TypeOGfg, 
+                       __T0So23CXProviderConfigurationC7CallKitE20supportedHandleTypess3SetVySo8CXHandleC0F4TypeOGfm, 
+                       __T0So23CXProviderConfigurationC7CallKitE20supportedHandleTypess3SetVySo8CXHandleC0F4TypeOGfs, 
+                       '__swift_FORCE_LOAD_$_swiftCallKit' ]
+    weak-def-symbols: [ _swift_rt_swift_retain, __T0So8CXHandleC10HandleTypeOML, 
+                        __T0So8CXHandleC10HandleTypeOMn, __T0So8CXHandleC10HandleTypeON, 
+                        __T0So8CXHandleC10HandleTypeOSo8NSNumberCIxyo_AdFIxir_TR051_T0So23CXProviderConfigurationC7CallKitE20supportedb15Typess3SetVySo8a4C0F4c4OGfspD7CAJcfU_Tf3nnpf_n, 
+                        __T0So8CXHandleC10HandleTypeOWV, __T0So8CXHandleC10HandleTypeOs16RawRepresentable7CallKitMA, 
+                        __T0So8CXHandleC10HandleTypeOs16RawRepresentable7CallKitWP, 
+                        __T0So8CXHandleC10HandleTypeOs16RawRepresentable7CallKitsAEP8rawValue0dI0QzfgTW, 
+                        __T0So8CXHandleC10HandleTypeOs16RawRepresentable7CallKitsAEPxSg0D5ValueQz03rawH0_tcfCTW, 
+                        __T0So8CXHandleC10HandleTypeOs8Hashable7CallKitWP, 
+                        __T0So8CXHandleC10HandleTypeOs8Hashable7CallKitsAEP9hashValueSifgTW, 
+                        __T0So8CXHandleC10HandleTypeOs9Equatable7CallKitWP, 
+                        __T0So8CXHandleC10HandleTypeOs9Equatable7CallKitsAEP2eeoiSbx_xtFZTW, 
+                        __T0So8CXHandleC10HandleTypeOwug, __T0So8CXHandleC10HandleTypeOwui, 
+                        __T0So8CXHandleC10HandleTypeOwup, __T0So8CXHandleCML, 
+                        __T0So8NSNumberCML, __T0s10CollectionPsE3mapSayqd__Gqd__7ElementQzKcKlFTfq4gn_ns3SetVySo8NSNumberCG_So8CXHandleC10HandleTypeOTg506_T0So8e4CSo8f3C10gh38Os5Error_pIxxdzo_AbFsAG_pIxirzo_TR051_i58So23CXProviderConfigurationC7CallKitE20supportedc15Typess3D38VySo8b4C0F4d9OGfgAJSo8A5CcfU_Tf3nnpf_nTf1cn_n, 
+                        __T0s11SetIteratorV11_nativeNextxSgyFSo8CXHandleC10HandleTypeO_Tg5, 
+                        __T0s13ManagedBufferCys05_HeapB6HeaderVySiGyXlGML, 
+                        __T0s15ContiguousArrayV15reserveCapacityySiFSo8CXHandleC10HandleTypeO_Tg5, 
+                        __T0s15ContiguousArrayV16_copyToNewBufferySi8oldCount_tFSo8CXHandleC10HandleTypeO_Tg5, 
+                        __T0s16_NativeSetBufferVss8HashableRzlE12unsafeAddNewyx3key_tFTfq4gn_nSo8CXHandleC10HandleTypeO_Tg5, 
+                        __T0s16_NativeSetBufferVss8HashableRzlE12unsafeAddNewyx3key_tFTfq4gn_nSo8NSNumberC_Tg5, 
+                        __T0s17LazyMapCollectionV12makeIterators0abE0Vy0E0Qzq_GyFs3SetVySo8CXHandleC10HandleTypeOG_So8NSNumberCTg5, 
+                        __T0s17_HeapBufferHeaderVySiGML, __T0s17_VariantSetBufferO018ensureUniqueNativeC0Sb11reallocated_Sb15capacityChangedtSiFSo8CXHandleC10HandleTypeO_Tg5, 
+                        __T0s17_VariantSetBufferO018ensureUniqueNativeC0Sb11reallocated_Sb15capacityChangedtSiFSo8NSNumberC_Tg5, 
+                        __T0s17_VariantSetBufferO019migrateDataToNativeC0ys06_CocoabC0VFTfq4gn_nSo8NSNumberC_Tg5, 
+                        __T0s17_VariantSetBufferO10startIndexs0B0V0E0Vyx_GfgSo8NSNumberC_Tg5, 
+                        __T0s17_VariantSetBufferO12nativeInsertSb8inserted_x011memberAfterE0tx_x6forKeytFSo8CXHandleC10HandleTypeO_Tg5, 
+                        __T0s17_VariantSetBufferO12nativeInsertSb8inserted_x011memberAfterE0tx_x6forKeytFSo8NSNumberC_Tg5, 
+                        __T0s20_ArrayBufferProtocolPsE025_forceCreateUniqueMutableB0s011_ContiguousaB0Vy7ElementQzGSi011countForNewB0_Si03minL8CapacitytFAEySo8CXHandleC10HandleTypeOG_Tg5, 
+                        __T0s20_ArrayBufferProtocolPsE22_arrayOutOfPlaceUpdateys011_ContiguousaB0Vy7ElementQzGz_S2iqd__ts16_PointerFunctionRd__AFQyd__AGRSlFTfq4nnngn_nAEySo8CXHandleC10HandleTypeOG_s07_IgnoreK0VyANGTg5, 
+                        __T0s23_ContiguousArrayStorageCySo8CXHandleC10HandleTypeOGML, 
+                        __T0s30_HashableTypedNativeSetStorageCySo8CXHandleC10HandleTypeOGML, 
+                        __T0s30_HashableTypedNativeSetStorageCySo8NSNumberCGML, 
+                        __T0s3SetVAByxGSi15minimumCapacity_tcfCSo8CXHandleC10HandleTypeO_Tg5Tf4nd_n, 
+                        __T0s3SetVAByxGSi15minimumCapacity_tcfCSo8NSNumberC_Tg5Tf4nd_n, 
+                        __T0s3SetVAByxGqd__c7ElementQyd__Rszs8SequenceRd__lufCSo8NSNumberC_s17LazyMapCollectionVyABySo8CXHandleC10HandleTypeOGAHGTg5Tf4xd_n, 
+                        __T0yXlML, ___swift_noop_self_return, ___swift_noop_void_return, 
+                        ___swift_reflection_version, '__swift_FORCE_LOAD_$_swiftCoreFoundation_$_CallKit', 
+                        '__swift_FORCE_LOAD_$_swiftDarwin_$_CallKit', '__swift_FORCE_LOAD_$_swiftDispatch_$_CallKit', 
+                        '__swift_FORCE_LOAD_$_swiftFoundation_$_CallKit', 
+                        '__swift_FORCE_LOAD_$_swiftObjectiveC_$_CallKit', 
+                        _swift_rt_swift_allocObject, _swift_rt_swift_dynamicCast, 
+                        _swift_rt_swift_getExistentialTypeMetadata, _swift_rt_swift_getInitializedObjCClass, 
+                        _swift_rt_swift_isUniquelyReferenced_nonNull_native, 
+                        _swift_rt_swift_release, _swift_rt_swift_retain_n, 
+                        _swift_rt_swift_slowAlloc, _swift_rt_swift_slowDealloc ]
+...

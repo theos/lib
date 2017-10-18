@@ -1,0 +1,46 @@
+---
+archs:           [ armv7, armv7s, arm64 ]
+platform:        ios
+install-name:    /var/lib/libswift/4.0/libswiftMapKit.dylib
+current-version: 0.0
+compatibility-version: 0.0
+exports:         
+  - archs:           [ armv7, armv7s ]
+    symbols:         [ ' stub helpers' ]
+    weak-def-symbols: [ __T0SC16MKCoordinateSpanVwXX, __T0SC16MKCoordinateSpanVwCP, 
+                        __T0SC16MKCoordinateSpanVwCp, __T0SC16MKCoordinateSpanVwTk, 
+                        __T0SC16MKCoordinateSpanVwal, __T0SC16MKCoordinateSpanVwde, 
+                        __T0SC16MKCoordinateSpanVwpr, ___swift_copy_outline_existential_box_pointer4, 
+                        ___swift_memcpy16_4, ___swift_memcpy_array16_4, 
+                        ___swift_memmove_array16_4, _swift_rt_swift_retain ]
+  - archs:           [ arm64 ]
+    weak-def-symbols: [ ___swift_memcpy16_8, ___swift_memcpy_array16_8, 
+                        ___swift_memmove_array16_8, ___swift_noop_self_return ]
+  - archs:           [ armv7, armv7s, arm64 ]
+    symbols:         [ __T0SC16MKCoordinateSpanVs21_ObjectiveCBridgeable6MapKitMA, 
+                       __T0SC16MKCoordinateSpanV6MapKitE19_bridgeToObjectiveCSo7NSValueCyF, 
+                       __T0SC16MKCoordinateSpanV6MapKitE26_forceBridgeFromObjectiveCySo7NSValueC_ABSgz6resulttFZ, 
+                       __T0SC16MKCoordinateSpanV6MapKitE34_conditionallyBridgeFromObjectiveCSbSo7NSValueC_ABSgz6resulttFZ, 
+                       __T0SC16MKCoordinateSpanV6MapKitE36_unconditionallyBridgeFromObjectiveCABSo7NSValueCSgFZ, 
+                       __T0SC16MKCoordinateSpanVs21_ObjectiveCBridgeable6MapKitWP, 
+                       __T0SC16MKCoordinateSpanVs21_ObjectiveCBridgeable6MapKitWa, 
+                       '__swift_FORCE_LOAD_$_swiftMapKit' ]
+    weak-def-symbols: [ ___swift_noop_void_return, __T0SC16MKCoordinateSpanV6MapKitE34_conditionallyBridgeFromObjectiveCSbSo7NSValueC_ABSgz6resulttFZTf4gnd_n, 
+                        __T0SC16MKCoordinateSpanV6MapKitE36_unconditionallyBridgeFromObjectiveCABSo7NSValueCSgFZTf4gd_n, 
+                        __T0SC16MKCoordinateSpanVMn, __T0SC16MKCoordinateSpanVN, 
+                        __T0SC16MKCoordinateSpanVWV, __T0SC16MKCoordinateSpanVs21_ObjectiveCBridgeable6MapKitsACP016_forceBridgeFromC1Cy01_C5CTypeQz_xSgz6resulttFZTW, 
+                        __T0SC16MKCoordinateSpanVs21_ObjectiveCBridgeable6MapKitsACP024_conditionallyBridgeFromC1CSb01_C5CTypeQz_xSgz6resulttFZTW, 
+                        __T0SC16MKCoordinateSpanVs21_ObjectiveCBridgeable6MapKitsACP026_unconditionallyBridgeFromC1Cx01_C5CTypeQzSgFZTW, 
+                        __T0SC16MKCoordinateSpanVs21_ObjectiveCBridgeable6MapKitsACP09_bridgeToC1C01_C5CTypeQzyFTW, 
+                        __T0So7NSValueCMF, __T0So7NSValueCML, __T0So7NSValueCMa, 
+                        ___swift_reflection_version, '__swift_FORCE_LOAD_$_swiftCoreFoundation_$_MapKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreGraphics_$_MapKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreImage_$_MapKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreLocation_$_MapKit', 
+                        '__swift_FORCE_LOAD_$_swiftDarwin_$_MapKit', '__swift_FORCE_LOAD_$_swiftDispatch_$_MapKit', 
+                        '__swift_FORCE_LOAD_$_swiftFoundation_$_MapKit', 
+                        '__swift_FORCE_LOAD_$_swiftMetal_$_MapKit', '__swift_FORCE_LOAD_$_swiftObjectiveC_$_MapKit', 
+                        '__swift_FORCE_LOAD_$_swiftQuartzCore_$_MapKit', 
+                        '__swift_FORCE_LOAD_$_swiftUIKit_$_MapKit', _swift_rt_swift_getInitializedObjCClass, 
+                        _swift_rt_swift_slowAlloc, _swift_rt_swift_slowDealloc ]
+...

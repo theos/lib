@@ -1,0 +1,82 @@
+---
+archs:           [ armv7, armv7s, arm64 ]
+platform:        ios
+install-name:    /var/lib/libswift/4.0/libswiftCloudKit.dylib
+current-version: 0.0
+compatibility-version: 0.0
+exports:         
+  - archs:           [ armv7, armv7s ]
+    symbols:         [ ' stub helpers' ]
+    weak-def-symbols: [ ___swift_memcpy4_4, ___swift_memcpy_array4_4, ___swift_memmove_array4_4 ]
+  - archs:           [ arm64 ]
+    weak-def-symbols: [ ___swift_memcpy8_8, ___swift_memcpy_array8_8, ___swift_memmove_array8_8 ]
+  - archs:           [ armv7, armv7s, arm64 ]
+    symbols:         [ __T0SC7CKErrorV8CloudKitE14ancestorRecordSo8CKRecordCSgfgTm, 
+                       __T0SC7CKErrorV8CloudKitE12clientRecordSo8CKRecordCSgfg, 
+                       __T0SC7CKErrorV8CloudKitE12serverRecordSo8CKRecordCSgfg, 
+                       __T0SC7CKErrorV8CloudKitE14ancestorRecordSo8CKRecordCSgfg, 
+                       __T0SC7CKErrorV8CloudKitE17retryAfterSecondsSdSgfg, 
+                       __T0SC7CKErrorV8CloudKitE21partialErrorsByItemIDs10DictionaryVys11AnyHashableVs5Error_pGSgfg, 
+                       '__swift_FORCE_LOAD_$_swiftCloudKit' ]
+    weak-def-symbols: [ _swift_rt_swift_retain, __T0SC7CKErrorV10Foundation13CustomNSError8CloudKitAcDP11errorDomainSSfgZTW, 
+                        __T0SC7CKErrorV10Foundation13CustomNSError8CloudKitAcDP13errorUserInfos10DictionaryVySSypGfgTW, 
+                        __T0SC7CKErrorV10Foundation13CustomNSError8CloudKitAcDP9errorCodeSifgTW, 
+                        __T0SC7CKErrorV10Foundation13CustomNSError8CloudKitWP, 
+                        __T0SC7CKErrorV10Foundation16__BridgedNSError8CloudKitAcDP14_nsErrorDomainSSfgZTW, 
+                        __T0SC7CKErrorV10Foundation16__BridgedNSError8CloudKitWP, 
+                        __T0SC7CKErrorV10Foundation21_BridgedStoredNSError8CloudKitAcDP4code4CodeQzfgTW, 
+                        __T0SC7CKErrorV10Foundation21_BridgedStoredNSError8CloudKitAcDP8_nsErrorSo0E0CfgTW, 
+                        __T0SC7CKErrorV10Foundation21_BridgedStoredNSError8CloudKitAcDPxSo0E0C8_nsError_tcfCTW, 
+                        __T0SC7CKErrorV10Foundation21_BridgedStoredNSError8CloudKitMA, 
+                        __T0SC7CKErrorV10Foundation21_BridgedStoredNSError8CloudKitWP, 
+                        __T0SC7CKErrorV10Foundation26_ObjectiveCBridgeableError8CloudKitAcDPxSgSo7NSErrorC08_bridgedH0_tcfCTW, 
+                        __T0SC7CKErrorV10Foundation26_ObjectiveCBridgeableError8CloudKitWP, 
+                        __T0SC7CKErrorV4CodeO10Foundation06_ErrorB8Protocol8CloudKitMA, 
+                        __T0SC7CKErrorV4CodeO10Foundation06_ErrorB8Protocol8CloudKitWP, 
+                        __T0SC7CKErrorV4CodeO10Foundation06_ErrorB8Protocol8CloudKitWa, 
+                        __T0SC7CKErrorV4CodeOMB, __T0SC7CKErrorV4CodeOML, 
+                        __T0SC7CKErrorV4CodeOMa, __T0SC7CKErrorV4CodeOMn, 
+                        __T0SC7CKErrorV4CodeON, __T0SC7CKErrorV4CodeOWV, 
+                        __T0SC7CKErrorV4CodeOs16RawRepresentable8CloudKitMA, 
+                        __T0SC7CKErrorV4CodeOs16RawRepresentable8CloudKitWP, 
+                        __T0SC7CKErrorV4CodeOs16RawRepresentable8CloudKitsAEP8rawValue0cH0QzfgTW, 
+                        __T0SC7CKErrorV4CodeOs16RawRepresentable8CloudKitsAEPxSg0C5ValueQz03rawG0_tcfCTW, 
+                        __T0SC7CKErrorV4CodeOs9Equatable8CloudKitWP, __T0SC7CKErrorV4CodeOs9Equatable8CloudKitsAEP2eeoiSbx_xtFZTW, 
+                        __T0SC7CKErrorV4CodeOwug, __T0SC7CKErrorV4CodeOwui, 
+                        __T0SC7CKErrorV4CodeOwup, __T0SC7CKErrorVML, __T0SC7CKErrorVMa, 
+                        __T0SC7CKErrorVMn, __T0SC7CKErrorVN, __T0SC7CKErrorVWV, 
+                        __T0SC7CKErrorVs5Error8CloudKitWP, __T0SC7CKErrorVs5Error8CloudKitsACP19_getEmbeddedNSErroryXlSgyFTW, 
+                        __T0SC7CKErrorVs5Error8CloudKitsACP5_codeSifgTW, 
+                        __T0SC7CKErrorVs5Error8CloudKitsACP7_domainSSfgTW, 
+                        __T0SC7CKErrorVs5Error8CloudKitsACP9_userInfoyXlSgfgTW, 
+                        __T0SC7CKErrorVs8Hashable8CloudKitWP, __T0SC7CKErrorVs8Hashable8CloudKitsACP9hashValueSifgTW, 
+                        __T0SC7CKErrorVs9Equatable8CloudKitWP, __T0SC7CKErrorVs9Equatable8CloudKitsACP2eeoiSbx_xtFZTW, 
+                        __T0SC7CKErrorVwCP, __T0SC7CKErrorVwCc, __T0SC7CKErrorVwCp, 
+                        __T0SC7CKErrorVwXX, __T0SC7CKErrorVwXx, __T0SC7CKErrorVwca, 
+                        __T0SC7CKErrorVwcp, __T0SC7CKErrorVwta, __T0SC7CKErrorVwxg, 
+                        __T0SC7CKErrorVwxs, __T0SC7CKErrorVwxx, __T0So7NSErrorCML, 
+                        __T0So8CKRecordCML, __T0s10DictionaryVys11AnyHashableVSo7NSErrorCGML, 
+                        __T0s11AnyHashableV2eeoiSbAB_ABtFZTfq4nnd_n, __T0s17_dictionaryUpCasts10DictionaryVyq0_q1_GACyxq_Gs8HashableRzsAFR0_r2_lFTfq4g_ns03AnyE0V_So7NSErrorCAHs5Error_pTg5, 
+                        __T0s18DictionaryIteratorV11_nativeNextx3key_q_5valuetSgyFs11AnyHashableV_So7NSErrorCTg5, 
+                        __T0s23_NativeDictionaryBufferVss8HashableRzr0_lE12unsafeAddNewyx3key_q_5valuetFTfq4ggn_ns03AnyD0V_s5Error_pTg5, 
+                        __T0s24_VariantDictionaryBufferO018ensureUniqueNativeC0Sb11reallocated_Sb15capacityChangedtSiFs11AnyHashableV_s5Error_pTg5, 
+                        __T0s24_VariantDictionaryBufferO17nativeUpdateValueq_Sgq__x6forKeytFs11AnyHashableV_s5Error_pTg5, 
+                        __T0s35_HasCustomAnyHashableRepresentation_pML, 
+                        __T0s37_HashableTypedNativeDictionaryStorageCys03AnyA0Vs5Error_pGML, 
+                        __T0s5Error_pML, __T0yXlML, __T0ypML, ___swift_destroy_boxed_opaque_existential_1, 
+                        ___swift_noop_self_return, ___swift_noop_void_return, 
+                        ___swift_project_boxed_opaque_existential_1, ___swift_reflection_version, 
+                        '__swift_FORCE_LOAD_$_swiftContacts_$_CloudKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreFoundation_$_CloudKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreLocation_$_CloudKit', 
+                        '__swift_FORCE_LOAD_$_swiftDarwin_$_CloudKit', 
+                        '__swift_FORCE_LOAD_$_swiftDispatch_$_CloudKit', 
+                        '__swift_FORCE_LOAD_$_swiftFoundation_$_CloudKit', 
+                        '__swift_FORCE_LOAD_$_swiftObjectiveC_$_CloudKit', 
+                        _swift_rt_swift_allocObject, _swift_rt_swift_dynamicCast, 
+                        _swift_rt_swift_getExistentialTypeMetadata, _swift_rt_swift_getInitializedObjCClass, 
+                        _swift_rt_swift_isUniquelyReferenced_nonNull_native, 
+                        _swift_rt_swift_release, _swift_rt_swift_release_n, 
+                        _swift_rt_swift_retain_n, _swift_rt_swift_slowAlloc, 
+                        _swift_rt_swift_slowDealloc ]
+...

@@ -1,0 +1,88 @@
+---
+archs:           [ armv7, armv7s, arm64 ]
+platform:        ios
+install-name:    /var/lib/libswift/4.0/libswiftCoreLocation.dylib
+current-version: 0.0
+compatibility-version: 0.0
+exports:         
+  - archs:           [ armv7, armv7s ]
+    symbols:         [ ' stub helpers' ]
+    weak-def-symbols: [ __T0SC22CLLocationCoordinate2DVwCP, __T0SC22CLLocationCoordinate2DVwCp, 
+                        __T0SC22CLLocationCoordinate2DVwTk, __T0SC22CLLocationCoordinate2DVwXX, 
+                        __T0SC22CLLocationCoordinate2DVwal, __T0SC22CLLocationCoordinate2DVwde, 
+                        __T0SC22CLLocationCoordinate2DVwpr, ___swift_copy_outline_existential_box_pointer4, 
+                        ___swift_memcpy16_4, ___swift_memcpy4_4, ___swift_memcpy_array16_4, 
+                        ___swift_memcpy_array4_4, ___swift_memmove_array16_4, 
+                        ___swift_memmove_array4_4 ]
+  - archs:           [ arm64 ]
+    weak-def-symbols: [ ___swift_memcpy8_8, ___swift_memcpy16_8, ___swift_memcpy_array16_8, 
+                        ___swift_memcpy_array8_8, ___swift_memmove_array16_8, 
+                        ___swift_memmove_array8_8 ]
+  - archs:           [ armv7, armv7s, arm64 ]
+    symbols:         [ __T0SC22CLLocationCoordinate2DVs21_ObjectiveCBridgeable12CoreLocationMA, 
+                       __T0SC22CLLocationCoordinate2DV12CoreLocationE19_bridgeToObjectiveCSo7NSValueCyF, 
+                       __T0SC22CLLocationCoordinate2DV12CoreLocationE26_forceBridgeFromObjectiveCySo7NSValueC_ABSgz6resulttFZ, 
+                       __T0SC22CLLocationCoordinate2DV12CoreLocationE34_conditionallyBridgeFromObjectiveCSbSo7NSValueC_ABSgz6resulttFZ, 
+                       __T0SC22CLLocationCoordinate2DV12CoreLocationE36_unconditionallyBridgeFromObjectiveCABSo7NSValueCSgFZ, 
+                       __T0SC22CLLocationCoordinate2DVs21_ObjectiveCBridgeable12CoreLocationWP, 
+                       __T0SC22CLLocationCoordinate2DVs21_ObjectiveCBridgeable12CoreLocationWa, 
+                       __T0SC7CLErrorV12CoreLocationE15alternateRegionSo8CLRegionCSgfg, 
+                       '__swift_FORCE_LOAD_$_swiftCoreLocation' ]
+    weak-def-symbols: [ _swift_rt_swift_retain, __T0SC22CLLocationCoordinate2DV12CoreLocationE34_conditionallyBridgeFromObjectiveCSbSo7NSValueC_ABSgz6resulttFZTf4gnd_n, 
+                        __T0SC22CLLocationCoordinate2DV12CoreLocationE36_unconditionallyBridgeFromObjectiveCABSo7NSValueCSgFZTf4gd_n, 
+                        __T0SC22CLLocationCoordinate2DVMn, __T0SC22CLLocationCoordinate2DVN, 
+                        __T0SC22CLLocationCoordinate2DVWV, __T0SC22CLLocationCoordinate2DVs21_ObjectiveCBridgeable12CoreLocationsACP016_forceBridgeFromC1Cy01_C5CTypeQz_xSgz6resulttFZTW, 
+                        __T0SC22CLLocationCoordinate2DVs21_ObjectiveCBridgeable12CoreLocationsACP024_conditionallyBridgeFromC1CSb01_C5CTypeQz_xSgz6resulttFZTW, 
+                        __T0SC22CLLocationCoordinate2DVs21_ObjectiveCBridgeable12CoreLocationsACP026_unconditionallyBridgeFromC1Cx01_C5CTypeQzSgFZTW, 
+                        __T0SC22CLLocationCoordinate2DVs21_ObjectiveCBridgeable12CoreLocationsACP09_bridgeToC1C01_C5CTypeQzyFTW, 
+                        __T0SC7CLErrorV10Foundation13CustomNSError12CoreLocationAcDP11errorDomainSSfgZTW, 
+                        __T0SC7CLErrorV10Foundation13CustomNSError12CoreLocationAcDP13errorUserInfos10DictionaryVySSypGfgTW, 
+                        __T0SC7CLErrorV10Foundation13CustomNSError12CoreLocationAcDP9errorCodeSifgTW, 
+                        __T0SC7CLErrorV10Foundation13CustomNSError12CoreLocationWP, 
+                        __T0SC7CLErrorV10Foundation16__BridgedNSError12CoreLocationAcDP14_nsErrorDomainSSfgZTW, 
+                        __T0SC7CLErrorV10Foundation16__BridgedNSError12CoreLocationWP, 
+                        __T0SC7CLErrorV10Foundation21_BridgedStoredNSError12CoreLocationAcDP4code4CodeQzfgTW, 
+                        __T0SC7CLErrorV10Foundation21_BridgedStoredNSError12CoreLocationAcDP8_nsErrorSo0E0CfgTW, 
+                        __T0SC7CLErrorV10Foundation21_BridgedStoredNSError12CoreLocationAcDPxSo0E0C8_nsError_tcfCTW, 
+                        __T0SC7CLErrorV10Foundation21_BridgedStoredNSError12CoreLocationMA, 
+                        __T0SC7CLErrorV10Foundation21_BridgedStoredNSError12CoreLocationWP, 
+                        __T0SC7CLErrorV10Foundation26_ObjectiveCBridgeableError12CoreLocationAcDPxSgSo7NSErrorC08_bridgedH0_tcfCTW, 
+                        __T0SC7CLErrorV10Foundation26_ObjectiveCBridgeableError12CoreLocationWP, 
+                        __T0SC7CLErrorV4CodeO10Foundation06_ErrorB8Protocol12CoreLocationMA, 
+                        __T0SC7CLErrorV4CodeO10Foundation06_ErrorB8Protocol12CoreLocationWP, 
+                        __T0SC7CLErrorV4CodeO10Foundation06_ErrorB8Protocol12CoreLocationWa, 
+                        __T0SC7CLErrorV4CodeOMB, __T0SC7CLErrorV4CodeOML, 
+                        __T0SC7CLErrorV4CodeOMa, __T0SC7CLErrorV4CodeOMn, 
+                        __T0SC7CLErrorV4CodeON, __T0SC7CLErrorV4CodeOWV, 
+                        __T0SC7CLErrorV4CodeOs16RawRepresentable12CoreLocationMA, 
+                        __T0SC7CLErrorV4CodeOs16RawRepresentable12CoreLocationWP, 
+                        __T0SC7CLErrorV4CodeOs16RawRepresentable12CoreLocationsAEP8rawValue0cH0QzfgTW, 
+                        __T0SC7CLErrorV4CodeOs16RawRepresentable12CoreLocationsAEPxSg0C5ValueQz03rawG0_tcfCTW, 
+                        __T0SC7CLErrorV4CodeOs9Equatable12CoreLocationWP, 
+                        __T0SC7CLErrorV4CodeOs9Equatable12CoreLocationsAEP2eeoiSbx_xtFZTW, 
+                        __T0SC7CLErrorV4CodeOwug, __T0SC7CLErrorV4CodeOwui, 
+                        __T0SC7CLErrorV4CodeOwup, __T0SC7CLErrorVML, __T0SC7CLErrorVMa, 
+                        __T0SC7CLErrorVMn, __T0SC7CLErrorVN, __T0SC7CLErrorVWV, 
+                        __T0SC7CLErrorVs5Error12CoreLocationWP, __T0SC7CLErrorVs5Error12CoreLocationsACP19_getEmbeddedNSErroryXlSgyFTW, 
+                        __T0SC7CLErrorVs5Error12CoreLocationsACP5_codeSifgTW, 
+                        __T0SC7CLErrorVs5Error12CoreLocationsACP7_domainSSfgTW, 
+                        __T0SC7CLErrorVs5Error12CoreLocationsACP9_userInfoyXlSgfgTW, 
+                        __T0SC7CLErrorVs8Hashable12CoreLocationWP, __T0SC7CLErrorVs8Hashable12CoreLocationsACP9hashValueSifgTW, 
+                        __T0SC7CLErrorVs9Equatable12CoreLocationWP, __T0SC7CLErrorVs9Equatable12CoreLocationsACP2eeoiSbx_xtFZTW, 
+                        __T0SC7CLErrorVwCP, __T0SC7CLErrorVwCc, __T0SC7CLErrorVwCp, 
+                        __T0SC7CLErrorVwXX, __T0SC7CLErrorVwXx, __T0SC7CLErrorVwca, 
+                        __T0SC7CLErrorVwcp, __T0SC7CLErrorVwta, __T0SC7CLErrorVwxg, 
+                        __T0SC7CLErrorVwxs, __T0SC7CLErrorVwxx, __T0So7NSErrorCML, 
+                        __T0So7NSValueCMF, __T0So7NSValueCML, __T0So7NSValueCMa, 
+                        __T0So8CLRegionCML, __T0ypML, ___swift_noop_self_return, 
+                        ___swift_noop_void_return, ___swift_reflection_version, 
+                        '__swift_FORCE_LOAD_$_swiftCoreFoundation_$_CoreLocation', 
+                        '__swift_FORCE_LOAD_$_swiftDarwin_$_CoreLocation', 
+                        '__swift_FORCE_LOAD_$_swiftDispatch_$_CoreLocation', 
+                        '__swift_FORCE_LOAD_$_swiftFoundation_$_CoreLocation', 
+                        '__swift_FORCE_LOAD_$_swiftObjectiveC_$_CoreLocation', 
+                        _swift_rt_swift_dynamicCast, _swift_rt_swift_getExistentialTypeMetadata, 
+                        _swift_rt_swift_getInitializedObjCClass, _swift_rt_swift_release, 
+                        _swift_rt_swift_release_n, _swift_rt_swift_retain_n, 
+                        _swift_rt_swift_slowAlloc, _swift_rt_swift_slowDealloc ]
+...

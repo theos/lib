@@ -1,0 +1,66 @@
+---
+archs:           [ armv7, armv7s, arm64 ]
+platform:        ios
+install-name:    /var/lib/libswift/4.0/libswiftARKit.dylib
+current-version: 0.0
+compatibility-version: 0.0
+exports:         
+  - archs:           [ armv7, armv7s ]
+    symbols:         [ ' stub helpers' ]
+  - archs:           [ armv7, armv7s, arm64 ]
+    symbols:         [ __T0So12ARPointCloudC5ARKitE6pointsSay4simd6float3VGfgTm, 
+                       __T0So12ARPointCloudC5ARKitE11identifiersSays6UInt64VGfg, 
+                       __T0So12ARPointCloudC5ARKitE6pointsSay4simd6float3VGfg, 
+                       __T0So14ARFaceGeometryC5ARKitE15triangleIndicesSays5Int16VGfg, 
+                       __T0So14ARFaceGeometryC5ARKitE18textureCoordinatesSay4simd6float2VGfg, 
+                       __T0So14ARFaceGeometryC5ARKitE8verticesSay4simd6float3VGfg, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonO21__derived_enum_equalsSbAG_AGtFZ, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonO9hashValueSifg, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOML, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOMa, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOMf, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOMn, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOWV, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOs8HashableACWP, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOs8HashableACWa, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOs9EquatableACWP, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOs9EquatableACWa, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateOML, __T0So8ARCameraC5ARKitE13TrackingStateOMa, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateOMf, __T0So8ARCameraC5ARKitE13TrackingStateOMn, 
+                       __T0So8ARCameraC5ARKitE13TrackingStateOWV, __T0So8ARCameraC5ARKitE13trackingStateAbCE08TrackingD0Ofg, 
+                       '__swift_FORCE_LOAD_$_swiftARKit' ]
+    weak-def-symbols: [ __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOs9EquatableACsAHP2eeoiSbx_xtFZTW, 
+                        __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOMF, 
+                        __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOs8HashableACsAHP9hashValueSifgTW, 
+                        __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOwug, 
+                        __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOwui, 
+                        __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOwup, 
+                        __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOwxg, 
+                        __T0So8ARCameraC5ARKitE13TrackingStateO6ReasonOwxs, 
+                        __T0So8ARCameraC5ARKitE13TrackingStateOMF, __T0So8ARCameraC5ARKitE13TrackingStateOwug, 
+                        __T0So8ARCameraC5ARKitE13TrackingStateOwui, __T0So8ARCameraC5ARKitE13TrackingStateOwup, 
+                        __T0So8ARCameraC5ARKitE13TrackingStateOwxg, __T0So8ARCameraC5ARKitE13TrackingStateOwxs, 
+                        __T0So8ARCameraCMF, __T0So8ARCameraCML, __T0s23_ContiguousArrayStorageCy4simd6float2VGML, 
+                        __T0s23_ContiguousArrayStorageCy4simd6float3VGML, 
+                        __T0s23_ContiguousArrayStorageCys5Int16VGML, __T0s23_ContiguousArrayStorageCys6UInt64VGML, 
+                        __T0s32_copyCollectionToContiguousArrays0dE0Vy7ElementQzGxs0B0RzlFSRy4simd6float3VG_Tg5Tf4x_n, 
+                        ___swift_memcpy1_1, ___swift_memcpy_array1_1, ___swift_memmove_array1_1, 
+                        ___swift_noop_self_return, ___swift_noop_void_return, 
+                        ___swift_reflection_version, '__swift_FORCE_LOAD_$_swiftAVFoundation_$_ARKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreAudio_$_ARKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreFoundation_$_ARKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreGraphics_$_ARKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreImage_$_ARKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreMedia_$_ARKit', 
+                        '__swift_FORCE_LOAD_$_swiftDarwin_$_ARKit', '__swift_FORCE_LOAD_$_swiftDispatch_$_ARKit', 
+                        '__swift_FORCE_LOAD_$_swiftFoundation_$_ARKit', 
+                        '__swift_FORCE_LOAD_$_swiftGLKit_$_ARKit', '__swift_FORCE_LOAD_$_swiftMetal_$_ARKit', 
+                        '__swift_FORCE_LOAD_$_swiftModelIO_$_ARKit', '__swift_FORCE_LOAD_$_swiftObjectiveC_$_ARKit', 
+                        '__swift_FORCE_LOAD_$_swiftQuartzCore_$_ARKit', 
+                        '__swift_FORCE_LOAD_$_swiftSceneKit_$_ARKit', '__swift_FORCE_LOAD_$_swiftSpriteKit_$_ARKit', 
+                        '__swift_FORCE_LOAD_$_swiftUIKit_$_ARKit', '__swift_FORCE_LOAD_$_swiftsimd_$_ARKit', 
+                        _swift_rt_swift_allocObject, _swift_rt_swift_getEnumCaseSinglePayload, 
+                        _swift_rt_swift_getInitializedObjCClass, _swift_rt_swift_retain, 
+                        _swift_rt_swift_slowAlloc, _swift_rt_swift_slowDealloc, 
+                        _swift_rt_swift_storeEnumTagSinglePayload ]
+...

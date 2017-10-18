@@ -1,0 +1,56 @@
+---
+archs:           [ armv7, armv7s, arm64 ]
+platform:        ios
+install-name:    /var/lib/libswift/4.0/libswiftSpriteKit.dylib
+current-version: 0.0
+compatibility-version: 0.0
+exports:         
+  - archs:           [ armv7, armv7s ]
+    symbols:         [ ' stub helpers' ]
+  - archs:           [ armv7, armv7s, arm64 ]
+    symbols:         [ __T09SpriteKit01_aB14MethodProviderCACycfcTo, __T09SpriteKit01_aB14MethodProviderC14_copyImageDataSQySo6NSDataCGyFTo, 
+                       __T09SpriteKit01_aB14MethodProviderCMF, __T09SpriteKit01_aB14MethodProviderCML, 
+                       __T09SpriteKit01_aB14MethodProviderCMa, __T09SpriteKit01_aB14MethodProviderCMf, 
+                       __T09SpriteKit01_aB14MethodProviderCMn, __T09SpriteKit01_aB14MethodProviderCN, 
+                       __T09SpriteKit01_aB14MethodProviderCfD, __T0So11SKShapeNodeC9SpriteKitE25customPlaygroundQuickLooks0fgH0Ofg, 
+                       __T0So11SKShapeNodeC9SpriteKitE25customPlaygroundQuickLooks0fgH0OfgTm, 
+                       __T0So11SKShapeNodeCs29CustomPlaygroundQuickLookable9SpriteKitWP, 
+                       __T0So11SKShapeNodeCs29CustomPlaygroundQuickLookable9SpriteKitWa, 
+                       __T0So12SKSpriteNodeC9SpriteKitE25customPlaygroundQuickLooks0fgH0Ofg, 
+                       __T0So12SKSpriteNodeCs29CustomPlaygroundQuickLookable9SpriteKitWP, 
+                       __T0So12SKSpriteNodeCs29CustomPlaygroundQuickLookable9SpriteKitWa, 
+                       __T0So14SKTextureAtlasC9SpriteKitE25customPlaygroundQuickLooks0fgH0Ofg, 
+                       __T0So14SKTextureAtlasCs29CustomPlaygroundQuickLookable9SpriteKitWP, 
+                       __T0So14SKTextureAtlasCs29CustomPlaygroundQuickLookable9SpriteKitWa, 
+                       __T0So18SKWarpGeometryGridC9SpriteKitE26replacingBySourcePositionsABSay4simd6float2VG9positions_tF, 
+                       __T0So18SKWarpGeometryGridC9SpriteKitE31replacingByDestinationPositionsABSay4simd6float2VG9positions_tF, 
+                       __T0So18SKWarpGeometryGridC9SpriteKitEABSi7columns_Si4rowsSay4simd6float2VG15sourcePositionsAI011destinationK0tcfC, 
+                       __T0So18SKWarpGeometryGridC9SpriteKitEABSi7columns_Si4rowsSay4simd6float2VG15sourcePositionsAI011destinationK0tcfc, 
+                       __T0So18SKWarpGeometryGridC9SpriteKitEABSi7columns_Si4rowsSay4simd6float2VG15sourcePositionsAI011destinationK0tcfcfA1_, 
+                       __T0So18SKWarpGeometryGridC9SpriteKitEABSi7columns_Si4rowsSay4simd6float2VG15sourcePositionsAI011destinationK0tcfcfA2_, 
+                       __T0So9SKTextureC9SpriteKitE25customPlaygroundQuickLooks0efG0Ofg, 
+                       __T0So9SKTextureCs29CustomPlaygroundQuickLookable9SpriteKitWP, 
+                       __T0So9SKTextureCs29CustomPlaygroundQuickLookable9SpriteKitWa, 
+                       '__swift_FORCE_LOAD_$_swiftSpriteKit', _objc_classes ]
+    weak-def-symbols: [ _swift_rt_swift_retain, __T0So11SKShapeNodeCs29CustomPlaygroundQuickLookable9SpriteKitsACP06customdE4Looks0deJ0OfgTW, 
+                        __T0So12SKSpriteNodeCs29CustomPlaygroundQuickLookable9SpriteKitsACP06customdE4Looks0deJ0OfgTW, 
+                        __T0So14SKTextureAtlasCs29CustomPlaygroundQuickLookable9SpriteKitsACP06customdE4Looks0deJ0OfgTW, 
+                        __T0So7UIImageCML, __T0So9SKTextureCs29CustomPlaygroundQuickLookable9SpriteKitsACP06customcD4Looks0cdI0OfgTW, 
+                        ___swift_reflection_version, '__swift_FORCE_LOAD_$_swiftCoreFoundation_$_SpriteKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreGraphics_$_SpriteKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreImage_$_SpriteKit', 
+                        '__swift_FORCE_LOAD_$_swiftDarwin_$_SpriteKit', 
+                        '__swift_FORCE_LOAD_$_swiftDispatch_$_SpriteKit', 
+                        '__swift_FORCE_LOAD_$_swiftFoundation_$_SpriteKit', 
+                        '__swift_FORCE_LOAD_$_swiftGLKit_$_SpriteKit', 
+                        '__swift_FORCE_LOAD_$_swiftMetal_$_SpriteKit', 
+                        '__swift_FORCE_LOAD_$_swiftModelIO_$_SpriteKit', 
+                        '__swift_FORCE_LOAD_$_swiftObjectiveC_$_SpriteKit', 
+                        '__swift_FORCE_LOAD_$_swiftQuartzCore_$_SpriteKit', 
+                        '__swift_FORCE_LOAD_$_swiftUIKit_$_SpriteKit', 
+                        '__swift_FORCE_LOAD_$_swiftsimd_$_SpriteKit', _swift_rt_swift_allocObject, 
+                        _swift_rt_swift_deallocObject, _swift_rt_swift_getInitializedObjCClass, 
+                        _swift_rt_swift_release, _swift_rt_swift_slowAlloc, 
+                        _swift_rt_swift_slowDealloc ]
+    objc-classes:    [ __TtC9SpriteKit24_SpriteKitMethodProvider ]
+...

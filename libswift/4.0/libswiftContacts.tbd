@@ -1,0 +1,66 @@
+---
+archs:           [ armv7, armv7s, arm64 ]
+platform:        ios
+install-name:    /var/lib/libswift/4.0/libswiftContacts.dylib
+current-version: 0.0
+compatibility-version: 0.0
+exports:         
+  - archs:           [ armv7, armv7s ]
+    symbols:         [ ' stub helpers' ]
+    weak-def-symbols: [ ___swift_memcpy4_4, ___swift_memcpy_array4_4, ___swift_memmove_array4_4 ]
+  - archs:           [ arm64 ]
+    weak-def-symbols: [ ___swift_memcpy8_8, ___swift_memcpy_array8_8, ___swift_memmove_array8_8 ]
+  - archs:           [ armv7, armv7s, arm64 ]
+    symbols:         [ __T0SC7CNErrorV8ContactsE25affectedRecordIdentifiersSaySSGSgfgTm, 
+                       __T0SC7CNErrorV8ContactsE15affectedRecordsSayyXlGSgfg, 
+                       __T0SC7CNErrorV8ContactsE25affectedRecordIdentifiersSaySSGSgfg, 
+                       __T0SC7CNErrorV8ContactsE8keyPathsSaySSGSgfg, '__swift_FORCE_LOAD_$_swiftContacts' ]
+    weak-def-symbols: [ _swift_rt_swift_retain, __T0SC7CNErrorV10Foundation13CustomNSError8ContactsAcDP11errorDomainSSfgZTW, 
+                        __T0SC7CNErrorV10Foundation13CustomNSError8ContactsAcDP13errorUserInfos10DictionaryVySSypGfgTW, 
+                        __T0SC7CNErrorV10Foundation13CustomNSError8ContactsAcDP9errorCodeSifgTW, 
+                        __T0SC7CNErrorV10Foundation13CustomNSError8ContactsWP, 
+                        __T0SC7CNErrorV10Foundation16__BridgedNSError8ContactsAcDP14_nsErrorDomainSSfgZTW, 
+                        __T0SC7CNErrorV10Foundation16__BridgedNSError8ContactsWP, 
+                        __T0SC7CNErrorV10Foundation21_BridgedStoredNSError8ContactsAcDP4code4CodeQzfgTW, 
+                        __T0SC7CNErrorV10Foundation21_BridgedStoredNSError8ContactsAcDP8_nsErrorSo0E0CfgTW, 
+                        __T0SC7CNErrorV10Foundation21_BridgedStoredNSError8ContactsAcDPxSo0E0C8_nsError_tcfCTW, 
+                        __T0SC7CNErrorV10Foundation21_BridgedStoredNSError8ContactsMA, 
+                        __T0SC7CNErrorV10Foundation21_BridgedStoredNSError8ContactsWP, 
+                        __T0SC7CNErrorV10Foundation26_ObjectiveCBridgeableError8ContactsAcDPxSgSo7NSErrorC08_bridgedG0_tcfCTW, 
+                        __T0SC7CNErrorV10Foundation26_ObjectiveCBridgeableError8ContactsWP, 
+                        __T0SC7CNErrorV4CodeO10Foundation06_ErrorB8Protocol8ContactsMA, 
+                        __T0SC7CNErrorV4CodeO10Foundation06_ErrorB8Protocol8ContactsWP, 
+                        __T0SC7CNErrorV4CodeO10Foundation06_ErrorB8Protocol8ContactsWa, 
+                        __T0SC7CNErrorV4CodeOMB, __T0SC7CNErrorV4CodeOML, 
+                        __T0SC7CNErrorV4CodeOMa, __T0SC7CNErrorV4CodeOMn, 
+                        __T0SC7CNErrorV4CodeON, __T0SC7CNErrorV4CodeOWV, 
+                        __T0SC7CNErrorV4CodeOs16RawRepresentable8ContactsMA, 
+                        __T0SC7CNErrorV4CodeOs16RawRepresentable8ContactsWP, 
+                        __T0SC7CNErrorV4CodeOs16RawRepresentable8ContactssAEP8rawValue0cG0QzfgTW, 
+                        __T0SC7CNErrorV4CodeOs16RawRepresentable8ContactssAEPxSg0C5ValueQz03rawF0_tcfCTW, 
+                        __T0SC7CNErrorV4CodeOs9Equatable8ContactsWP, __T0SC7CNErrorV4CodeOs9Equatable8ContactssAEP2eeoiSbx_xtFZTW, 
+                        __T0SC7CNErrorV4CodeOwug, __T0SC7CNErrorV4CodeOwui, 
+                        __T0SC7CNErrorV4CodeOwup, __T0SC7CNErrorVML, __T0SC7CNErrorVMa, 
+                        __T0SC7CNErrorVMn, __T0SC7CNErrorVN, __T0SC7CNErrorVWV, 
+                        __T0SC7CNErrorVs5Error8ContactsWP, __T0SC7CNErrorVs5Error8ContactssACP19_getEmbeddedNSErroryXlSgyFTW, 
+                        __T0SC7CNErrorVs5Error8ContactssACP5_codeSifgTW, 
+                        __T0SC7CNErrorVs5Error8ContactssACP7_domainSSfgTW, 
+                        __T0SC7CNErrorVs5Error8ContactssACP9_userInfoyXlSgfgTW, 
+                        __T0SC7CNErrorVs8Hashable8ContactsWP, __T0SC7CNErrorVs8Hashable8ContactssACP9hashValueSifgTW, 
+                        __T0SC7CNErrorVs9Equatable8ContactsWP, __T0SC7CNErrorVs9Equatable8ContactssACP2eeoiSbx_xtFZTW, 
+                        __T0SC7CNErrorVwCP, __T0SC7CNErrorVwCc, __T0SC7CNErrorVwCp, 
+                        __T0SC7CNErrorVwXX, __T0SC7CNErrorVwXx, __T0SC7CNErrorVwca, 
+                        __T0SC7CNErrorVwcp, __T0SC7CNErrorVwta, __T0SC7CNErrorVwxg, 
+                        __T0SC7CNErrorVwxs, __T0SC7CNErrorVwxx, __T0SaySSGML, 
+                        __T0SayyXlGML, __T0So7NSErrorCML, __T0yXlML, __T0ypML, 
+                        ___swift_noop_self_return, ___swift_noop_void_return, 
+                        ___swift_reflection_version, '__swift_FORCE_LOAD_$_swiftCoreFoundation_$_Contacts', 
+                        '__swift_FORCE_LOAD_$_swiftDarwin_$_Contacts', 
+                        '__swift_FORCE_LOAD_$_swiftDispatch_$_Contacts', 
+                        '__swift_FORCE_LOAD_$_swiftFoundation_$_Contacts', 
+                        '__swift_FORCE_LOAD_$_swiftObjectiveC_$_Contacts', 
+                        _swift_rt_swift_dynamicCast, _swift_rt_swift_getExistentialTypeMetadata, 
+                        _swift_rt_swift_getInitializedObjCClass, _swift_rt_swift_release, 
+                        _swift_rt_swift_release_n, _swift_rt_swift_retain_n, 
+                        _swift_rt_swift_slowAlloc, _swift_rt_swift_slowDealloc ]
+...
