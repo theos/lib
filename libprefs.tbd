@@ -1,12 +1,13 @@
 ---
-archs:           [ armv7, armv7s, arm64 ]
-platform:        ios
-install-name:    /usr/lib/libprefs.dylib
-current-version: 2.2.2
-compatibility-version: 2.2.0
+archs:                 [ armv7, arm64 ]
+platform:              ios
+flags:                 [ not_app_extension_safe ]
+install-name:          /usr/lib/libprefs.dylib
+current-version:       2.2.3
+compatibility-version: 2.2
+objc-constraint:       retain_release
 exports:
-  - archs:            [ armv7, armv7s, arm64 ]
-    symbols:          [ _PLFilterKey ]
-    objc-classes:     [ _PLCustomListController,
-                        _PLFailedBundleListController, _PLLocalizedListController ]
+  - archs:              [ armv7, arm64 ]
+    symbols:            [ _PLFilterKey ]
+    objc-classes:       [ _PLCustomListController, _PLFailedBundleListController, _PLLocalizedListController ]
 ...

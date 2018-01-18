@@ -1,14 +1,15 @@
 ---
-archs:           [ armv7, armv7s, arm64 ]
-platform:        ios
-install-name:    /usr/lib/libflipswitch.dylib
-current-version: 0.0.0
-compatibility-version: 0.0.0
+archs:                 [ armv6, armv7, armv7s, arm64 ]
+platform:              ios
+flags:                 [ not_app_extension_safe ]
+install-name:          /usr/lib/libflipswitch.dylib
+current-version:       0
+compatibility-version: 0
+objc-constraint:       retain_release
 exports:
-  - archs:            [ armv7, armv7s, arm64 ]
-    symbols:          [ _FSSwitchPanelSwitchIdentifierKey,
-                        _FSSwitchPanelSwitchStateChangedNotification, _FSSwitchPanelSwitchWillOpenURLNotification,
-                        _FSSwitchPanelSwitchesChangedNotification, _FSSwitchStateFromNSString,
-                        _NSStringFromFSSwitchState ]
-    objc-classes:     [ _FSSwitchPanel ]
+  - archs:              [ armv6, armv7, armv7s, arm64 ]
+    symbols:            [ _FSColorWithHexString, _FSSwitchPanelSwitchIdentifierKey,
+                          _FSSwitchPanelSwitchStateChangedNotification, _FSSwitchPanelSwitchWillOpenURLNotification,
+                          _FSSwitchPanelSwitchesChangedNotification, _FSSwitchStateFromNSString, _NSStringFromFSSwitchState ]
+    objc-classes:       [ _FSSwitchPanel ]
 ...
