@@ -21,21 +21,19 @@
  * property from the init method. The following example sets the tint color,
  * table view background color, and enables an inverted navigation bar:
  *
- * ```
- * - (instancetype)init {
- * 	self = [super init];
+ * 	- (instancetype)init {
+ * 		self = [super init];
  *
- * 	if (self) {
- * 		HBAppearanceSettings *appearanceSettings = [[HBAppearanceSettings alloc] init];
- * 		appearanceSettings.tintColor = [UIColor colorWithRed:66.f / 255.f green:105.f / 255.f blue:154.f / 255.f alpha:1];
- * 		appearanceSettings.tableViewBackgroundColor = [UIColor colorWithWhite:242.f / 255.f alpha:1];
- * 		appearanceSettings.invertedNavigationBar = YES;
- * 		self.hb_appearanceSettings = appearanceSettings;
+ * 		if (self) {
+ * 			HBAppearanceSettings *appearanceSettings = [[HBAppearanceSettings alloc] init];
+ * 			appearanceSettings.tintColor = [UIColor colorWithRed:66.f / 255.f green:105.f / 255.f blue:154.f / 255.f alpha:1];
+ * 			appearanceSettings.tableViewBackgroundColor = [UIColor colorWithWhite:242.f / 255.f alpha:1];
+ * 			appearanceSettings.invertedNavigationBar = YES;
+ * 			self.hb_appearanceSettings = appearanceSettings;
+ * 		}
+ *
+ * 		return self;
  * 	}
- *
- * 	return self;
- * }
- * ```
  */
 
 @interface HBAppearanceSettings : NSObject
@@ -71,15 +69,47 @@
 @property (nonatomic, copy, nullable) UIColor *navigationBarTintColor;
 
 /**
- * Whether to use an inverted navigation bar. Override this method if you want
- * this behavior.
+ * The color to use for the navigation bar title label. Override this method to
+ * return a UIColor to use.
+ *
+ * A nil value will cause no modification of the navigation bar title color to occur.
+ *
+ * @returns By default, nil.
+ */
+@property (nonatomic, copy, nullable) UIColor *navigationBarTitleColor;
+
+/**
+ * The background color to use for the navigation bar. Override this method to
+ * return a UIColor to use.
+ *
+ * A nil value will cause no modification of the navigation bar background to
+ * occur.
+ *
+ * @returns By default, nil.
+ */
+@property (nonatomic, copy, nullable) UIColor *navigationBarBackgroundColor;
+
+/**
+ * The color to use for the status bar icons. Override this method to return a UIColor to use.
+ *
+ * A nil value will cause no modification of the status bar color to occur.
+ *
+ * @returns By default, nil.
+ */
+@property (nonatomic, copy, nullable) UIColor *statusBarTintColor;
+
+/**
+ * Whether to use an inverted navigation bar.
+ *
+ * Deprecated. Set navigationBarBackgroundColor and navigationBarTitleColor
+ * instead.
  *
  * An inverted navigation bar has a tinted background, rather than the buttons
  * being tinted. All other interface elements will be tinted the same.
  *
  * @returns By default, NO.
  */
-@property (nonatomic, assign) BOOL invertedNavigationBar;
+@property (nonatomic, assign) BOOL invertedNavigationBar __attribute((deprecated("Set navigationBarBackgroundColor and navigationBarTitleColor instead.")));
 
 /**
  * Whether to use a translucent navigation bar. Override this method if you want

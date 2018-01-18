@@ -1,5 +1,4 @@
 #import "HBListController.h"
-#import <MessageUI/MFMailComposeViewController.h>
 
 /**
  * The `HBAboutListController` class in `CepheiPrefs` provides a list controller
@@ -13,32 +12,26 @@
  *
  * ### Example Usage
  * 	<dict>
- * 		<key>action</key>
- * 		<string>hb_openWebsite</string>
  * 		<key>cell</key>
- * 		<string>PSButtonCell</string>
+ * 		<string>PSLinkCell</string>
  * 		<key>cellClass</key>
- * 		<string>HBTintedTableCell</string>
+ * 		<string>HBLinkTableCell</string>
  * 		<key>label</key>
  * 		<string>Visit Website</string>
+ * 		<key>url</key>
+ * 		<string>https://hbang.ws/</string>
  * 	</dict>
  * 	<dict>
  * 		<key>cell</key>
  * 		<string>PSGroupCell</string>
- * 		<key>footerText</key>
- * 		<string>Experiencing issues? Send us an email and we’ll help you.</string>
- * 	</dict>
- * 	<dict>
- * 		<key>cell</key>
- * 		<string>PSGroupCell</string>
+ * 		<key>label</key>
+ * 		<string>Experiencing issues?</string>
  * 	</dict>
  * 	<dict>
  * 		<key>action</key>
  * 		<string>hb_sendSupportEmail</string>
  * 		<key>cell</key>
- * 		<string>PSButtonCell</string>
- * 		<key>cellClass</key>
- * 		<string>HBTintedTableCell</string>
+ * 		<string>PSLinkCell</string>
  * 		<key>label</key>
  * 		<string>Email Support</string>
  * 	</dict>
@@ -50,23 +43,21 @@
  * 	</dict>
  * 	<dict>
  * 		<key>cell</key>
- * 		<string>PSGroupCell</string>
- * 	</dict>
- * 	<dict>
- * 		<key>action</key>
- * 		<string>hb_openDonate</string>
- * 		<key>cell</key>
- * 		<string>PSButtonCell</string>
+ * 		<string>PSLinkCell</string>
  * 		<key>cellClass</key>
- * 		<string>HBTintedTableCell</string>
+ * 		<string>HBLinkTableCell</string>
  * 		<key>label</key>
  * 		<string>Donate</string>
+ * 		<key>url</key>
+ * 		<string>https://hbang.ws/donate/</string>
  * 	</dict>
  */
 
+@class TSIncludeInstruction;
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HBAboutListController : HBListController <MFMailComposeViewControllerDelegate>
+@interface HBAboutListController : HBListController
 
 /**
  * @name Constants
@@ -80,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @returns By default, https://www.hbang.ws/.
  */
-+ (NSURL *)hb_websiteURL __attribute((deprecated("Use an HBLinkTableCell instead.")));;
++ (NSURL *)hb_websiteURL __attribute((deprecated("Use an HBLinkTableCell instead.")));
 
 /**
  * The website URL to open when tapping the "donate" cell. Override this method
@@ -111,7 +102,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @returns By default, nil.
  * @see HBSupportController
  */
-+ (nullable NSArray *)hb_supportInstructions;
++ (nullable NSArray <TSIncludeInstruction *> *)hb_supportInstructions;
 
 /**
  * @name Preference Specifier Actions
