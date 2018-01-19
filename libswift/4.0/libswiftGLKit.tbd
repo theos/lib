@@ -1,0 +1,24 @@
+---
+archs:           [ armv7, armv7s, arm64 ]
+platform:        ios
+install-name:    /var/lib/libswift/4.0/libswiftGLKit.dylib
+current-version: 0.0
+compatibility-version: 0.0
+exports:         
+  - archs:           [ armv7, armv7s, arm64 ]
+    symbols:         [ __T05GLKit22_indexHomogeneousValueq_SPyxG_Sitr0_lF, 
+                       __T0SC11_GLKMatrix2V5GLKitE9subscriptSfSicfg, __T0SC11_GLKMatrix3V5GLKitE9subscriptSfSicfg, 
+                       __T0SC11_GLKMatrix4V5GLKitE9subscriptSfSicfg, __T0SC11_GLKVector2V5GLKitE9subscriptSfSicfg, 
+                       __T0SC11_GLKVector3V5GLKitE9subscriptSfSicfg, __T0SC11_GLKVector4V5GLKitE9subscriptSfSicfg, 
+                       __T0SC14_GLKQuaternionV5GLKitE9subscriptSfSicfg, 
+                       '__swift_FORCE_LOAD_$_swiftGLKit' ]
+    weak-def-symbols: [ ___swift_reflection_version, '__swift_FORCE_LOAD_$_swiftCoreFoundation_$_GLKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreGraphics_$_GLKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreImage_$_GLKit', 
+                        '__swift_FORCE_LOAD_$_swiftDarwin_$_GLKit', '__swift_FORCE_LOAD_$_swiftDispatch_$_GLKit', 
+                        '__swift_FORCE_LOAD_$_swiftFoundation_$_GLKit', 
+                        '__swift_FORCE_LOAD_$_swiftMetal_$_GLKit', '__swift_FORCE_LOAD_$_swiftModelIO_$_GLKit', 
+                        '__swift_FORCE_LOAD_$_swiftObjectiveC_$_GLKit', 
+                        '__swift_FORCE_LOAD_$_swiftQuartzCore_$_GLKit', 
+                        '__swift_FORCE_LOAD_$_swiftUIKit_$_GLKit', '__swift_FORCE_LOAD_$_swiftsimd_$_GLKit' ]
+...

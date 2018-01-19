@@ -1,0 +1,43 @@
+---
+archs:           [ armv7, armv7s, arm64 ]
+platform:        ios
+install-name:    /var/lib/libswift/4.0/libswiftWatchKit.dylib
+current-version: 0.0
+compatibility-version: 0.0
+exports:         
+  - archs:           [ armv7, armv7s ]
+    symbols:         [ ' stub helpers' ]
+  - archs:           [ armv7, armv7s, arm64 ]
+    symbols:         [ __T0s15ContiguousArrayV16_copyToNewBufferySi8oldCount_tFyp_Tg5Tm, 
+                       __T0So21WKInterfaceControllerC8WatchKitE07presentB0ySaySS4name_yXl7contexttG20withNamesAndContexts_tF, 
+                       __T0So21WKInterfaceControllerC8WatchKitE07presentB0ySaySS4name_yXl7contexttGF, 
+                       __T0So21WKInterfaceControllerC8WatchKitE21reloadRootControllersySaySS4name_yXl7contexttG20withNamesAndContexts_tFZ, 
+                       __T0So21WKInterfaceControllerC8WatchKitE21reloadRootControllersySaySS4name_yXl7contexttGFZ, 
+                       '__swift_FORCE_LOAD_$_swiftWatchKit' ]
+    weak-def-symbols: [ __T0s15ContiguousArrayV15reserveCapacityySiFyp_Tg5, 
+                        __T0So21WKInterfaceControllerC8WatchKitE07presentB0ySaySS4name_yXl7contexttG20withNamesAndContexts_tFTf4gn_n, 
+                        __T0So21WKInterfaceControllerC8WatchKitE21reloadRootControllersySaySS4name_yXl7contexttG20withNamesAndContexts_tFZTf4gd_n, 
+                        __T0s15ContiguousArrayV15reserveCapacityySiFSS_Tg5, 
+                        __T0s15ContiguousArrayV16_copyToNewBufferySi8oldCount_tFSS_Tg5, 
+                        __T0s15ContiguousArrayV16_copyToNewBufferySi8oldCount_tFyp_Tg5, 
+                        __T0s20_ArrayBufferProtocolPsE025_forceCreateUniqueMutableB0s011_ContiguousaB0Vy7ElementQzGSi011countForNewB0_Si03minL8CapacitytFAEySSG_Tg5, 
+                        __T0s20_ArrayBufferProtocolPsE025_forceCreateUniqueMutableB0s011_ContiguousaB0Vy7ElementQzGSi011countForNewB0_Si03minL8CapacitytFAEyypG_Tg5, 
+                        __T0s20_ArrayBufferProtocolPsE22_arrayOutOfPlaceUpdateys011_ContiguousaB0Vy7ElementQzGz_S2iqd__ts16_PointerFunctionRd__AFQyd__AGRSlFTfq4nnngn_nAEySSG_s07_IgnoreK0VySSGTg5, 
+                        __T0s20_ArrayBufferProtocolPsE22_arrayOutOfPlaceUpdateys011_ContiguousaB0Vy7ElementQzGz_S2iqd__ts16_PointerFunctionRd__AFQyd__AGRSlFTfq4nnngn_nAEyypG_s07_IgnoreK0VyypGTg5, 
+                        __T0s23_ContiguousArrayStorageCySSGML, __T0s23_ContiguousArrayStorageCyypGML, 
+                        __T0ypML, ___swift_destroy_boxed_opaque_existential_0, 
+                        ___swift_reflection_version, '__swift_FORCE_LOAD_$_swiftCoreFoundation_$_WatchKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreGraphics_$_WatchKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreImage_$_WatchKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreLocation_$_WatchKit', 
+                        '__swift_FORCE_LOAD_$_swiftDarwin_$_WatchKit', 
+                        '__swift_FORCE_LOAD_$_swiftDispatch_$_WatchKit', 
+                        '__swift_FORCE_LOAD_$_swiftFoundation_$_WatchKit', 
+                        '__swift_FORCE_LOAD_$_swiftMapKit_$_WatchKit', 
+                        '__swift_FORCE_LOAD_$_swiftMetal_$_WatchKit', '__swift_FORCE_LOAD_$_swiftObjectiveC_$_WatchKit', 
+                        '__swift_FORCE_LOAD_$_swiftQuartzCore_$_WatchKit', 
+                        '__swift_FORCE_LOAD_$_swiftUIKit_$_WatchKit', _swift_rt_swift_allocObject, 
+                        _swift_rt_swift_getExistentialTypeMetadata, _swift_rt_swift_getInitializedObjCClass, 
+                        _swift_rt_swift_isUniquelyReferenced_nonNull_native, 
+                        _swift_rt_swift_release, _swift_rt_swift_retain ]
+...

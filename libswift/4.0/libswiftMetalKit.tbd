@@ -1,0 +1,33 @@
+---
+archs:           [ armv7, armv7s, arm64 ]
+platform:        ios
+install-name:    /var/lib/libswift/4.0/libswiftMetalKit.dylib
+current-version: 0.0
+compatibility-version: 0.0
+exports:         
+  - archs:           [ armv7, armv7s ]
+    symbols:         [ ' stub helpers' ]
+  - archs:           [ armv7, armv7s, arm64 ]
+    symbols:         [ __T08MetalKit030MTKModelIOVertexDescriptorFromA9WithErrorSo09MDLVertexE0CSo09MTLVertexE0CKF, 
+                       __T08MetalKit44MTKMetalVertexDescriptorFromModelIOWithErrorSo09MTLVertexE0CSgSo09MDLVertexE0CKF, 
+                       __T0So7MTKMeshC8MetalKitE9newMeshesSaySo7MDLMeshCG13modelIOMeshes_SayABG05metalcE0tSo8MDLAssetC5asset_So9MTLDevice_p6devicetKFZ, 
+                       '__swift_FORCE_LOAD_$_swiftMetalKit' ]
+    weak-def-symbols: [ __T0Sa15reserveCapacityySiFSo7MDLMeshC_Tg5, __T0So7MDLMeshCML, 
+                        __T0So7MTKMeshCML, __T0s12_ArrayBufferV18_typeCheckSlowPathySiFSo7MDLMeshC_Tg5, 
+                        __T0s12_ArrayBufferV19_getElementSlowPathyXlSiFSo7MDLMeshC_Tg5, 
+                        __T0s22_ContiguousArrayBufferVAByxGSi19_uninitializedCount_Si15minimumCapacitytcfCSo7MDLMeshC_Tg5Tf4nnd_n, 
+                        __T0s23_ContiguousArrayStorageCySo7MDLMeshCGML, 
+                        __T0s32_copyCollectionToContiguousArrays0dE0Vy7ElementQzGxs0B0RzlFs01_E6BufferVySo7MDLMeshCG_Tg5, 
+                        ___swift_reflection_version, '__swift_FORCE_LOAD_$_swiftCoreFoundation_$_MetalKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreGraphics_$_MetalKit', 
+                        '__swift_FORCE_LOAD_$_swiftCoreImage_$_MetalKit', 
+                        '__swift_FORCE_LOAD_$_swiftDarwin_$_MetalKit', 
+                        '__swift_FORCE_LOAD_$_swiftDispatch_$_MetalKit', 
+                        '__swift_FORCE_LOAD_$_swiftFoundation_$_MetalKit', 
+                        '__swift_FORCE_LOAD_$_swiftMetal_$_MetalKit', '__swift_FORCE_LOAD_$_swiftModelIO_$_MetalKit', 
+                        '__swift_FORCE_LOAD_$_swiftObjectiveC_$_MetalKit', 
+                        '__swift_FORCE_LOAD_$_swiftQuartzCore_$_MetalKit', 
+                        '__swift_FORCE_LOAD_$_swiftUIKit_$_MetalKit', '__swift_FORCE_LOAD_$_swiftsimd_$_MetalKit', 
+                        _swift_rt_swift_allocObject, _swift_rt_swift_getInitializedObjCClass, 
+                        _swift_rt_swift_retain ]
+...
