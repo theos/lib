@@ -24,10 +24,6 @@ The licenses of each library on this repo are listed as follows.
     * The header provided here is taken from Cydia Substrate 0.9.4001 (February 2013) and has a comment that indicates that it is licensed under [GNU LGPL v3](CydiaSubstrate.framework/Headers/CydiaSubstrate.h).
     * Cydia Substrate 0.9.5000 (December 2013) changed the license comment to GNU GPL v3. It is unclear why this has changed.
 
-### Apple
-* Swift: [Apache License, version 2.0](https://swift.org/LICENSE.txt)
-    * The .tbd files in `libswift/*` are modifications of .dylib files in the open source Swift toolchains
-
 ### Other
 Files in this repo that aren’t copied or generated from elsewhere are released into the Public Domain.
 
