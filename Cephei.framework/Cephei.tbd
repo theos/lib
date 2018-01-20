@@ -1,7 +1,6 @@
 ---
 archs:                 [ armv7, arm64 ]
 platform:              ios
-flags:                 [ not_app_extension_safe ]
 install-name:          /Library/Frameworks/Cephei.framework/Cephei
 current-version:       0
 compatibility-version: 0
