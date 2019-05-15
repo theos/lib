@@ -1,14 +1,14 @@
 ---
-archs:                 [ armv7, arm64 ]
+archs:                 [ armv7, arm64, arm64e ]
 platform:              ios
 install-name:          /usr/lib/libactivator.dylib
 current-version:       0
 compatibility-version: 0
 objc-constraint:       retain_release
 exports:
-  - archs:              [ armv7, arm64 ]
+  - archs:              [ armv7, arm64, arm64e ]
     objc-ivars:         [ _LAEvent._handled, _LAEvent._mode, _LAEvent._name, _LAEvent._userInfo ]
-  - archs:              [ armv7, arm64 ]
+  - archs:              [ armv7, arm64, arm64e ]
     symbols:            [ _LAActivatorAssignmentsChangedNotification, _LAActivatorAuthorizationChangedNotification,
                           _LAActivatorAvailableEventsChangedNotification, _LAActivatorAvailableListenersChangedNotification,
                           _LAActivatorEventModeChangedNotification, _LAEventModeApplication, _LAEventModeLockScreen,

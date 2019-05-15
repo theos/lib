@@ -1,12 +1,12 @@
 ---
-archs:                 [ armv7, arm64 ]
+archs:                 [ armv7, arm64, arm64e ]
 platform:              ios
 install-name:          /Library/Frameworks/Cephei.framework/Cephei
 current-version:       0
 compatibility-version: 0
 objc-constraint:       retain_release
 exports:
-  - archs:              [ armv7, arm64 ]
+  - archs:              [ armv7, arm64, arm64e ]
     symbols:            [ _HBOutputForShellCommand, _HBOutputForShellCommandWithReturnCode, _HBPreferencesDidChangeNotification,
                           _HBPreferencesNotMobileException, _KnownIdentifiers, __CFPreferencesCopyKeyListWithContainer,
                           __CFPreferencesCopyMultipleWithContainer, __CFPreferencesCopyValueWithContainer,
