@@ -19,10 +19,7 @@ The licenses of each library on this repo are listed as follows.
 
 ### SaurikIT
 * Cycript: [GNU AGPL, version 3.0](http://gitweb.saurik.com/cycript.git/blob/HEAD:/COPYING)
-* Cydia Substrate: Licensing is rather strange and unclear here.
-    * As of approximately version 0.9.3997, Cydia Substrate became closed source. It was previously GNU GPL v3.
-    * The header provided here is taken from Cydia Substrate 0.9.4001 (February 2013) and has a comment that indicates that it is licensed under [GNU LGPL v3](CydiaSubstrate.framework/Headers/CydiaSubstrate.h).
-    * Cydia Substrate 0.9.5000 (December 2013) changed the license comment to GNU GPL v3. It is unclear why this has changed.
+* Cydia Substrate: [3-Clause BSD License](http://opensource.org/licenses/BSD-3-Clause)
 
 ### Other
 Files in this repo that aren’t copied or generated from elsewhere are released into the Public Domain.
