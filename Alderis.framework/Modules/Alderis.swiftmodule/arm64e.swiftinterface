@@ -1,0 +1,125 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.2 (swiftlang-1103.0.32.1 clang-1103.0.32.29)
+// swift-module-flags: -target arm64e-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Alderis
+@_exported import Alderis
+import CoreServices
+import Swift
+import UIKit
+public protocol ColorPropertyListValue {
+}
+extension String : Alderis.ColorPropertyListValue {
+}
+extension Array : Alderis.ColorPropertyListValue where Element : Swift.FixedWidthInteger {
+}
+extension UIColor {
+  @nonobjc convenience public init?(propertyListValue: Alderis.ColorPropertyListValue?)
+  @objc(initWithHbcp_propertyListValue:) convenience dynamic public init?(_propertyListValueObjC propertyListValue: Any?)
+  @objc(hbcp_propertyListValue) dynamic public var propertyListValue: Swift.String {
+    @objc get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(HBColorWell) open class ColorWell : UIKit.UIControl {
+  @objc open var color: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc open var borderColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc open var isDragInteractionEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc open var isDropInteractionEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc override dynamic open func layoutSubviews()
+  @objc override dynamic open func didMoveToWindow()
+  @objc override dynamic open func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @objc override dynamic open func addTarget(_ target: Any?, action: ObjectiveC.Selector, for controlEvents: UIKit.UIControl.Event)
+  @available(iOS 14, *)
+  @objc override dynamic open func addAction(_ action: UIKit.UIAction, for controlEvents: UIKit.UIControl.Event)
+  @objc override dynamic open func removeTarget(_ target: Any?, action: ObjectiveC.Selector?, for controlEvents: UIKit.UIControl.Event)
+  @available(iOS 14, *)
+  @objc override dynamic open func removeAction(_ action: UIKit.UIAction, for controlEvents: UIKit.UIControl.Event)
+  @available(iOS 14, *)
+  @objc override dynamic open func removeAction(identifiedBy actionIdentifier: UIKit.UIAction.Identifier, for controlEvents: UIKit.UIControl.Event)
+  @objc deinit
+}
+extension ColorWell : UIKit.UIDragInteractionDelegate {
+  @objc dynamic public func dragInteraction(_ interaction: UIKit.UIDragInteraction, itemsForBeginning session: UIKit.UIDragSession) -> [UIKit.UIDragItem]
+}
+extension ColorWell : UIKit.UIDropInteractionDelegate {
+  @objc dynamic public func dropInteraction(_ interaction: UIKit.UIDropInteraction, canHandle session: UIKit.UIDropSession) -> Swift.Bool
+  @objc dynamic public func dropInteraction(_ interaction: UIKit.UIDropInteraction, sessionDidUpdate session: UIKit.UIDropSession) -> UIKit.UIDropProposal
+  @objc dynamic public func dropInteraction(_ interaction: UIKit.UIDropInteraction, performDrop session: UIKit.UIDropSession)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, renamed: "ColorWell")
+@objc(HBColorPickerCircleView) open class ColorPickerCircleView : Alderis.ColorWell {
+  @objc deinit
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(HBColorPickerViewController) open class ColorPickerViewController : UIKit.UIViewController {
+  public init(configuration: Alderis.ColorPickerConfiguration)
+  @objc weak open var delegate: Alderis.ColorPickerDelegate? {
+    @objc get
+    @objc set
+  }
+  @objc open var configuration: Alderis.ColorPickerConfiguration!
+  @available(*, deprecated, message: "Use ColorPickerConfiguration instead")
+  @objc open var overrideSmartInvert: Swift.Bool
+  @available(*, deprecated, message: "Use ColorPickerConfiguration instead")
+  @objc open var color: UIKit.UIColor
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic open func viewWillLayoutSubviews()
+  @objc override dynamic open func viewSafeAreaInsetsDidChange()
+  @objc override dynamic open func preferredContentSizeDidChange(forChildContentContainer container: UIKit.UIContentContainer)
+  @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
+  @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @objc override dynamic open func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @objc deinit
+}
+@objc(HBColorPickerTab) public enum ColorPickerTab : Swift.Int, Swift.CaseIterable {
+  case swatch = 0
+  case map = 1
+  case sliders = 2
+  public typealias AllCases = [Alderis.ColorPickerTab]
+  public static var allCases: [Alderis.ColorPickerTab] {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(HBColorPickerConfiguration) open class ColorPickerConfiguration : ObjectiveC.NSObject {
+  @objc public init(color: UIKit.UIColor)
+  @objc open var color: UIKit.UIColor
+  @objc open var supportsAlpha: Swift.Bool
+  @objc open var title: Swift.String?
+  @objc open var initialTab: Alderis.ColorPickerTab
+  @nonobjc open var visibleTabs: [Alderis.ColorPickerTab]
+  @objc(visibleTabs) open var _visibleTabsObjC: [Alderis.ColorPickerTab.RawValue] {
+    @objc get
+    @objc set
+  }
+  @objc open var showTabs: Swift.Bool
+  @objc open var overrideSmartInvert: Swift.Bool
+  @objc open var isDropInteractionEnabled: Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(HBColorPickerDelegate) public protocol ColorPickerDelegate : ObjectiveC.NSObjectProtocol {
+  @objc(colorPicker:didSelectColor:) optional func colorPicker(_ colorPicker: Alderis.ColorPickerViewController, didSelect color: UIKit.UIColor)
+  @objc(colorPicker:didAcceptColor:) optional func colorPicker(_ colorPicker: Alderis.ColorPickerViewController, didAccept color: UIKit.UIColor)
+  @objc(colorPickerDidCancel:) optional func colorPickerDidCancel(_ colorPicker: Alderis.ColorPickerViewController)
+}
+extension Alderis.ColorPickerTab : Swift.Equatable {}
+extension Alderis.ColorPickerTab : Swift.Hashable {}
+extension Alderis.ColorPickerTab : Swift.RawRepresentable {}
