@@ -3,9 +3,9 @@ tbd-version:     4
 targets:         [ arm64-ios, arm64e-ios ]
 uuids:
   - target:          arm64-ios
-    value:           CE2A32F6-F342-3587-8A76-8A37A0FFEFD0
+    value:           40B6F787-D70C-3EA7-96E9-BCC58D1514F9
   - target:          arm64e-ios
-    value:           02149B42-B3C3-3531-B0B3-2985D9BA2197
+    value:           C7D62218-4E2C-3695-B8A0-896BC952E3A3
 flags:           [ not_app_extension_safe ]
 install-name:    '/Library/Frameworks/Orion.framework/Orion'
 swift-abi-version: 7
