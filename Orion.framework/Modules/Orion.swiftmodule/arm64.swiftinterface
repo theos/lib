@@ -8,21 +8,13 @@ extension _GlueClassHook {
   public static func callSuper<ReturnType, SuperType>(_ type: SuperType.Type, send: (SuperType, Swift.UnsafeRawPointer) -> ReturnType) -> ReturnType
   public func callSuper<ReturnType, SuperType>(_ type: SuperType.Type, send: (SuperType, Swift.UnsafeRawPointer) -> ReturnType) -> ReturnType
 }
-public struct AnyBackend : Orion.Backend {
-  public struct Builder : Orion.HookBuilder {
-    public mutating func addFunctionHook(_ function: Orion.Function, replacement: Swift.UnsafeMutableRawPointer, completion: @escaping (Swift.UnsafeMutableRawPointer) -> Swift.Void)
-    public mutating func addMethodHook(cls: Swift.AnyClass, sel: ObjectiveC.Selector, replacement: Swift.UnsafeMutableRawPointer, completion: @escaping (Swift.UnsafeMutableRawPointer) -> Swift.Void)
-  }
-  public init<UnderlyingBackend>(_ backend: UnderlyingBackend) where UnderlyingBackend : Orion.Backend
-  public func hook(_ build: (inout Orion.AnyBackend.Builder) -> Swift.Void)
-}
-public protocol HookBuilder {
-  mutating func addFunctionHook(_ function: Orion.Function, replacement: Swift.UnsafeMutableRawPointer, completion: @escaping (Swift.UnsafeMutableRawPointer) -> Swift.Void)
-  mutating func addMethodHook(cls: Swift.AnyClass, sel: ObjectiveC.Selector, replacement: Swift.UnsafeMutableRawPointer, completion: @escaping (Swift.UnsafeMutableRawPointer) -> Swift.Void)
+public enum HookDescriptor {
+  public typealias Completion = (Swift.UnsafeMutableRawPointer) -> Swift.Void
+  case method(cls: Swift.AnyClass, sel: ObjectiveC.Selector, replacement: Swift.UnsafeMutableRawPointer, completion: Orion.HookDescriptor.Completion)
+  case function(function: Orion.Function, replacement: Swift.UnsafeMutableRawPointer, completion: Orion.HookDescriptor.Completion)
 }
 public protocol Backend {
-  associatedtype Builder : Orion.HookBuilder
-  func hook(_ build: (inout Self.Builder) -> Swift.Void)
+  func apply(hooks: [Orion.HookDescriptor])
 }
 extension Backend {
   public func hookFunction(_ function: Orion.Function, replacement: Swift.UnsafeMutableRawPointer) -> Swift.UnsafeMutableRawPointer
@@ -32,6 +24,9 @@ public protocol DefaultBackend : Orion.Backend {
   init()
 }
 public enum Backends {
+}
+@inlinable public func _indirectFatalError(_ message: @autoclosure () -> Swift.String = "", file: Swift.StaticString = #file, line: Swift.UInt = #line) -> Swift.Never {
+    fatalError(message(), file: file, line: line)
 }
 @dynamicMemberLookup public struct Ivars<IvarType> {
   public init(_ object: Swift.AnyObject)
@@ -71,30 +66,35 @@ public enum Function : Swift.CustomStringConvertible {
     get
   }
 }
-public protocol _FunctionHookProtocol : AnyObject, Orion._AnyHook {
+public protocol FunctionHookProtocol : AnyObject, Orion.AnyHook {
   static var target: Orion.Function { get }
   init()
 }
-open class _FunctionHookClass {
+open class FunctionHookClass {
   required public init()
   @objc deinit
 }
-public typealias FunctionHook = Orion._FunctionHookClass & Orion._FunctionHookProtocol
+public typealias FunctionHook = Orion.FunctionHookClass & Orion.FunctionHookProtocol
 public protocol _AnyGlueFunctionHook {
   static var _orig: Swift.AnyClass { get }
   var _orig: Swift.AnyObject { get }
 }
-extension _FunctionHookProtocol {
-  @discardableResult
-  public func orig<Result>(_ block: (Self) throws -> Result) rethrows -> Result
+extension FunctionHookProtocol {
+  @_transparent public var orig: Self {
+    @_transparent get {
+        guard let unwrapped = (self as? _AnyGlueFunctionHook)?._orig as? Self
+            else { _indirectFatalError("Could not get orig") }
+        return unwrapped
+    }
+  }
 }
-public protocol _GlueFunctionHook : Orion._AnyGlueFunctionHook, Orion._AnyGlueHook, Orion._FunctionHookProtocol {
+public protocol _GlueFunctionHook : Orion.FunctionHookProtocol, Orion._AnyGlueFunctionHook, Orion._AnyGlueHook {
   associatedtype Code
   static var origFunction: Self.Code { get set }
-  associatedtype OrigType : Orion._FunctionHookProtocol
+  associatedtype OrigType : Orion.FunctionHookProtocol
 }
 extension _GlueFunctionHook {
-  public static func activate<Builder>(withHookBuilder builder: inout Builder) where Builder : Orion.HookBuilder
+  public static func activate() -> [Orion.HookDescriptor]
   public static var _orig: Swift.AnyClass {
     get
   }
@@ -108,29 +108,25 @@ extension Backends {
   }
 }
 extension Backends.Internal {
-  public struct Builder : Orion.HookBuilder {
-    public func addFunctionHook(_ function: Orion.Function, replacement: Swift.UnsafeMutableRawPointer, completion: (Swift.UnsafeMutableRawPointer) -> Swift.Void)
-    public mutating func addMethodHook(cls: Swift.AnyClass, sel: ObjectiveC.Selector, replacement: Swift.UnsafeMutableRawPointer, completion: @escaping (Swift.UnsafeMutableRawPointer) -> Swift.Void)
-  }
-  public func hook(_ build: (inout Orion.Backends.Internal.Builder) -> Swift.Void)
+  public func apply(hooks: [Orion.HookDescriptor])
 }
-public protocol _AnyHook {
+public protocol AnyHook {
   static func hookWillActivate() -> Swift.Bool
   static func hookDidActivate()
 }
-extension _AnyHook {
+extension AnyHook {
   public static func hookWillActivate() -> Swift.Bool
   public static func hookDidActivate()
 }
-public protocol _AnyGlueHook : Orion._AnyHook {
-  static func activate<Builder>(withHookBuilder builder: inout Builder) where Builder : Orion.HookBuilder
+public protocol _AnyGlueHook : Orion.AnyHook {
+  static func activate() -> [Orion.HookDescriptor]
 }
 public enum SubclassMode {
   case none
   case createSubclass
   case createSubclassNamed(Swift.String)
 }
-public protocol _ClassHookProtocol : AnyObject, Orion._AnyHook {
+public protocol ClassHookProtocol : AnyObject, Orion.AnyHook {
   associatedtype Target : AnyObject
   static var _target: Self.Target.Type { get }
   static var targetName: Swift.String { get }
@@ -139,7 +135,7 @@ public protocol _ClassHookProtocol : AnyObject, Orion._AnyHook {
   var target: Self.Target { get }
   init(target: Self.Target)
 }
-extension _ClassHookProtocol {
+extension ClassHookProtocol {
   public static var targetName: Swift.String {
     get
   }
@@ -153,13 +149,13 @@ extension _ClassHookProtocol {
     get
   }
 }
-@objcMembers open class _ClassHookClass<Target> where Target : AnyObject {
+@objcMembers open class ClassHookClass<Target> where Target : AnyObject {
   final public let target: Target
   required public init(target: Target)
   @objc deinit
 }
-public typealias ClassHook<Target> = Orion._ClassHookClass<Target> & Orion._ClassHookProtocol where Target : AnyObject
-extension _ClassHookProtocol {
+public typealias ClassHook<Target> = Orion.ClassHookClass<Target> & Orion.ClassHookProtocol where Target : AnyObject
+extension ClassHookProtocol {
   public static var target: Self.Target.Type {
     get
   }
@@ -171,23 +167,43 @@ public protocol _AnyGlueClassHook {
   static var _supr: Swift.AnyClass { get }
   var _supr: Swift.AnyObject { get }
 }
-extension _ClassHookProtocol {
-  @discardableResult
-  public func orig<Result>(_ block: (Self) throws -> Result) rethrows -> Result
-  @discardableResult
-  public static func orig<Result>(_ block: (Self.Type) throws -> Result) rethrows -> Result
-  @discardableResult
-  public func supr<Result>(_ block: (Self) throws -> Result) rethrows -> Result
-  @discardableResult
-  public static func supr<Result>(_ block: (Self.Type) throws -> Result) rethrows -> Result
+extension ClassHookProtocol {
+  @_transparent public var orig: Self {
+    @_transparent get {
+        guard let unwrapped = (self as? _AnyGlueClassHook)?._orig as? Self
+            else { _indirectFatalError("Could not get orig") }
+        return unwrapped
+    }
+  }
+  @_transparent public static var orig: Self.Type {
+    @_transparent get {
+        guard let unwrapped = (self as? _AnyGlueClassHook.Type)?._orig as? Self.Type
+            else { _indirectFatalError("Could not get orig") }
+        return unwrapped
+    }
+  }
+  @_transparent public var supr: Self {
+    @_transparent get {
+        guard let unwrapped = (self as? _AnyGlueClassHook)?._supr as? Self
+            else { _indirectFatalError("Could not get supr") }
+        return unwrapped
+    }
+  }
+  @_transparent public static var supr: Self.Type {
+    @_transparent get {
+        guard let unwrapped = (self as? _AnyGlueClassHook.Type)?._supr as? Self.Type
+            else { _indirectFatalError("Could not get supr") }
+        return unwrapped
+    }
+  }
 }
-public struct ClassHookBuilder<Builder> where Builder : Orion.HookBuilder {
+public struct _ClassHookBuilder {
   public mutating func addHook<Code>(_ sel: ObjectiveC.Selector, _ replacement: Code, isClassMethod: Swift.Bool, completion: @escaping (Code) -> Swift.Void)
 }
-public protocol _GlueClassHook : Orion._AnyGlueClassHook, Orion._AnyGlueHook, Orion._ClassHookProtocol {
-  associatedtype OrigType : Orion._ClassHookProtocol where Self.Target == Self.OrigType.Target, Self.OrigType.Target == Self.SuprType.Target
-  associatedtype SuprType : Orion._ClassHookProtocol
-  static func activate<Builder>(withClassHookBuilder builder: inout Orion.ClassHookBuilder<Builder>) where Builder : Orion.HookBuilder
+public protocol _GlueClassHook : Orion.ClassHookProtocol, Orion._AnyGlueClassHook, Orion._AnyGlueHook {
+  associatedtype OrigType : Orion.ClassHookProtocol where Self.Target == Self.OrigType.Target, Self.OrigType.Target == Self.SuprType.Target
+  associatedtype SuprType : Orion.ClassHookProtocol
+  static func activate(withClassHookBuilder builder: inout Orion._ClassHookBuilder)
 }
 extension _GlueClassHook {
   public static var _orig: Swift.AnyClass {
@@ -203,7 +219,7 @@ extension _GlueClassHook {
     get
   }
   public static func addMethod<Code>(_ selector: ObjectiveC.Selector, _ implementation: Code, isClassMethod: Swift.Bool)
-  public static func activate<Builder>(withHookBuilder builder: inout Builder) where Builder : Orion.HookBuilder
+  public static func activate() -> [Orion.HookDescriptor]
 }
 @propertyWrapper public struct Property<T> {
   @available(*, unavailable, message: "@Property is only available on ClassHook types")
@@ -243,7 +259,7 @@ extension _GlueClassHook {
   public init(wrappedValue: T, _ retainOrCopy: Orion.Property<T>.RetainOrCopy)
   public init(wrappedValue: T, _ atomicity: Orion.Property<T>.Atomicity)
   public init(wrappedValue: T)
-  public static subscript<EnclosingSelf>(_enclosingInstance object: EnclosingSelf, wrapped wrappedKeyPath: Swift.ReferenceWritableKeyPath<EnclosingSelf, T>, storage storageKeyPath: Swift.ReferenceWritableKeyPath<EnclosingSelf, Orion.Property<T>>) -> T where EnclosingSelf : Orion._ClassHookProtocol {
+  public static subscript<EnclosingSelf>(_enclosingInstance object: EnclosingSelf, wrapped wrappedKeyPath: Swift.ReferenceWritableKeyPath<EnclosingSelf, T>, storage storageKeyPath: Swift.ReferenceWritableKeyPath<EnclosingSelf, Orion.Property<T>>) -> T where EnclosingSelf : Orion.ClassHookProtocol {
     get
     set
   }
@@ -257,7 +273,7 @@ extension _GlueClassHook {
   }
   public init(_ cls: Swift.AnyClass)
   public init(_ name: Swift.String)
-  public static subscript(dynamicMember className: Swift.String) -> Orion.Dynamic {
+  public static subscript(dynamicMember typeName: Swift.String) -> Orion.Dynamic {
     get
   }
   public func appending(component: Swift.String) -> Orion.Dynamic
@@ -275,16 +291,12 @@ extension NSObject {
   public static func alloc<I>(interface: I.Type) -> I
 }
 extension Backends {
-  public struct Substrate : Orion.Backend {
+  public struct Substrate : Orion.DefaultBackend {
     public init()
   }
 }
 extension Backends.Substrate {
-  public struct Builder : Orion.HookBuilder {
-    public mutating func addFunctionHook(_ function: Orion.Function, replacement: Swift.UnsafeMutableRawPointer, completion: @escaping (Swift.UnsafeMutableRawPointer) -> Swift.Void)
-    public mutating func addMethodHook(cls: Swift.AnyClass, sel: ObjectiveC.Selector, replacement: Swift.UnsafeMutableRawPointer, completion: @escaping (Swift.UnsafeMutableRawPointer) -> Swift.Void)
-  }
-  public func hook(_ build: (inout Orion.Backends.Substrate.Builder) -> Swift.Void)
+  public func apply(hooks: [Orion.HookDescriptor])
 }
 extension Orion.Property.Assign : Swift.Equatable {}
 extension Orion.Property.Assign : Swift.Hashable {}
