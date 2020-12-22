@@ -1,3 +1,4 @@
+#import <Preferences/Preferences.h>
 #import "HBAboutListController.h"
 #import "HBAppearanceSettings.h"
 #import "HBDiscreteSliderTableCell.h"

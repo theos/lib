@@ -1,0 +1,6 @@
+framework module CepheiPrefs {
+  umbrella header "CepheiPrefs.h"
+
+  export *
+  module * { export * }
+}

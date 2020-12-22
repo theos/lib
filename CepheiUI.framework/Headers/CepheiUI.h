@@ -1,2 +1,2 @@
-#import "CompactConstraint/CompactConstraint.h"
+#import "CompactConstraint.h"
 #import "UIColor+HBAdditions.h"

@@ -1,0 +1,6 @@
+framework module CepheiUI {
+  umbrella header "CepheiUI.h"
+
+  export *
+  module * { export * }
+}
