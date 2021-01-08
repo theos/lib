@@ -1,16 +1,12 @@
---- !tapi-tbd
-tbd-version:     4
-targets:         [ arm64-ios, arm64e-ios ]
-uuids:
-  - target:          arm64-ios
-    value:           D28FB92F-8DC7-3846-BD15-2717322F68E2
-  - target:          arm64e-ios
-    value:           C018CC3C-A861-336E-AF2F-77CDDA10F531
+--- !tapi-tbd-v3
+archs:           [ arm64, arm64e ]
+uuids:           [ 'arm64: 01533B5A-F50A-3219-B0D3-9515FCDBD320', 'arm64e: C03E6DDC-18D9-36D2-BE77-437DB0462900' ]
+platform:        ios
 flags:           [ not_app_extension_safe ]
 install-name:    '/Library/Frameworks/Orion.framework/Orion'
 swift-abi-version: 7
-exports:
-  - targets:         [ arm64-ios, arm64e-ios ]
+exports:         
+  - archs:           [ arm64, arm64e ]
     symbols:         [ '_$s11BackendType5Orion09TweakWithA0PTl', '_$s4Code5Orion17_GlueFunctionHookPTl', 
                        '_$s5Orion09ClassHookB0C6targetACyxGx_tcfC', '_$s5Orion09ClassHookB0C6targetACyxGx_tcfCTj', 
                        '_$s5Orion09ClassHookB0C6targetACyxGx_tcfCTq', '_$s5Orion09ClassHookB0C6targetACyxGx_tcfc', 
@@ -21,10 +17,16 @@ exports:
                        '_$s5Orion12DefaultTweakVAA0C0AAMc', '_$s5Orion12DefaultTweakVAA0C0AAWP', 
                        '_$s5Orion12DefaultTweakVACycfC', '_$s5Orion12DefaultTweakVMa', 
                        '_$s5Orion12DefaultTweakVMn', '_$s5Orion12DefaultTweakVN', 
-                       '_$s5Orion12SubclassModeO06createB0yA2CmFWC', '_$s5Orion12SubclassModeO06createB5NamedyACSScACmFWC', 
-                       '_$s5Orion12SubclassModeO4noneyA2CmFWC', '_$s5Orion12SubclassModeOMa', 
-                       '_$s5Orion12SubclassModeOMn', '_$s5Orion12SubclassModeON', 
-                       '_$s5Orion12_AnyGlueHookMp', '_$s5Orion12_AnyGlueHookP8activateSayAA0D10DescriptorOGyFZTj', 
+                       '_$s5Orion12DeinitPolicyO2eeoiySbAC_ACtFZ', '_$s5Orion12DeinitPolicyO4hash4intoys6HasherVz_tF', 
+                       '_$s5Orion12DeinitPolicyO8callOrigyA2CmFWC', '_$s5Orion12DeinitPolicyO8callSupryA2CmFWC', 
+                       '_$s5Orion12DeinitPolicyO9hashValueSivg', '_$s5Orion12DeinitPolicyO9hashValueSivpMV', 
+                       '_$s5Orion12DeinitPolicyOMa', '_$s5Orion12DeinitPolicyOMn', 
+                       '_$s5Orion12DeinitPolicyON', '_$s5Orion12DeinitPolicyOSHAAMc', 
+                       '_$s5Orion12DeinitPolicyOSQAAMc', '_$s5Orion12SubclassModeO06createB0yA2CmFWC', 
+                       '_$s5Orion12SubclassModeO06createB5NamedyACSScACmFWC', '_$s5Orion12SubclassModeO4noneyA2CmFWC', 
+                       '_$s5Orion12SubclassModeOMa', '_$s5Orion12SubclassModeOMn', 
+                       '_$s5Orion12SubclassModeON', '_$s5Orion12_AnyGlueHookMp', 
+                       '_$s5Orion12_AnyGlueHookP8activateSayAA0D10DescriptorOGyFZTj', 
                        '_$s5Orion12_AnyGlueHookP8activateSayAA0D10DescriptorOGyFZTq', 
                        '_$s5Orion12_AnyGlueHookPAA0bD0Tb', '_$s5Orion12_AnyGlueHookTL', 
                        '_$s5Orion14DefaultBackendMp', '_$s5Orion14DefaultBackendPAA0C0Tb', 
@@ -38,10 +40,12 @@ exports:
                        '_$s5Orion14_GlueClassHookP8activate04withcD7BuilderyAA01_cdG0Vz_tFZTj', 
                        '_$s5Orion14_GlueClassHookP8activate04withcD7BuilderyAA01_cdG0Vz_tFZTq', 
                        '_$s5Orion14_GlueClassHookPAA04_AnybD0Tb', '_$s5Orion14_GlueClassHookPAA04_AnybcD0Tb', 
-                       '_$s5Orion14_GlueClassHookPAA0cD8ProtocolTb', '_$s5Orion14_GlueClassHookPAAE5_origyXlXpvgZ', 
-                       '_$s5Orion14_GlueClassHookPAAE5_origyXlvg', '_$s5Orion14_GlueClassHookPAAE5_origyXlvpMV', 
-                       '_$s5Orion14_GlueClassHookPAAE5_supryXlXpvgZ', '_$s5Orion14_GlueClassHookPAAE5_supryXlvg', 
-                       '_$s5Orion14_GlueClassHookPAAE5_supryXlvpMV', '_$s5Orion14_GlueClassHookPAAE8activateSayAA0D10DescriptorOGyFZ', 
+                       '_$s5Orion14_GlueClassHookPAA0cD8ProtocolTb', '_$s5Orion14_GlueClassHookPAAE15deinitOrigError4file4lines5NeverOs12StaticStringV_SutF', 
+                       '_$s5Orion14_GlueClassHookPAAE15deinitSuprError4file4lines5NeverOs12StaticStringV_SutF', 
+                       '_$s5Orion14_GlueClassHookPAAE5_origyXlXpvgZ', '_$s5Orion14_GlueClassHookPAAE5_origyXlvg', 
+                       '_$s5Orion14_GlueClassHookPAAE5_origyXlvpMV', '_$s5Orion14_GlueClassHookPAAE5_supryXlXpvgZ', 
+                       '_$s5Orion14_GlueClassHookPAAE5_supryXlvg', '_$s5Orion14_GlueClassHookPAAE5_supryXlvpMV', 
+                       '_$s5Orion14_GlueClassHookPAAE8activateSayAA0D10DescriptorOGyFZ', 
                        '_$s5Orion14_GlueClassHookPAAE9addMethod__02iscF0y10ObjectiveC8SelectorV_qd__SbtlFZ', 
                        '_$s5Orion14_GlueClassHookPAAE9callSuper_4sendqd__qd_0_m_qd__qd_0__SVtXEtr0_lF', 
                        '_$s5Orion14_GlueClassHookPAAE9callSuper_4sendqd__qd_0_m_qd__qd_0__SVtXEtr0_lFZ', 
@@ -53,6 +57,8 @@ exports:
                        '_$s5Orion17ClassHookProtocolP10targetNameSSvgZTj', '_$s5Orion17ClassHookProtocolP10targetNameSSvgZTq', 
                        '_$s5Orion17ClassHookProtocolP12subclassModeAA08SubclassF0OvgZTj', 
                        '_$s5Orion17ClassHookProtocolP12subclassModeAA08SubclassF0OvgZTq', 
+                       '_$s5Orion17ClassHookProtocolP13deinitializerAA12DeinitPolicyOyFTj', 
+                       '_$s5Orion17ClassHookProtocolP13deinitializerAA12DeinitPolicyOyFTq', 
                        '_$s5Orion17ClassHookProtocolP6target6TargetQzvgTj', '_$s5Orion17ClassHookProtocolP6target6TargetQzvgTq', 
                        '_$s5Orion17ClassHookProtocolP6targetx6TargetQz_tcfCTj', '_$s5Orion17ClassHookProtocolP6targetx6TargetQz_tcfCTq', 
                        '_$s5Orion17ClassHookProtocolP7_target6TargetQzmvgZTj', '_$s5Orion17ClassHookProtocolP7_target6TargetQzmvgZTq', 
@@ -60,6 +66,7 @@ exports:
                        '_$s5Orion17ClassHookProtocolP9protocolsSaySo0D0CGvgZTq', 
                        '_$s5Orion17ClassHookProtocolPAA03AnyC0Tb', '_$s5Orion17ClassHookProtocolPAAE10targetNameSSvgZ', 
                        '_$s5Orion17ClassHookProtocolPAAE12subclassModeAA08SubclassF0OvgZ', 
+                       '_$s5Orion17ClassHookProtocolPAAE13deinitializerAA12DeinitPolicyOyF', 
                        '_$s5Orion17ClassHookProtocolPAAE21_initializeTargetType0F0QzmyFZ', 
                        '_$s5Orion17ClassHookProtocolPAAE4origxmvgZ', '_$s5Orion17ClassHookProtocolPAAE4origxvg', 
                        '_$s5Orion17ClassHookProtocolPAAE4origxvpMV', '_$s5Orion17ClassHookProtocolPAAE4suprxmvgZ', 
@@ -78,6 +85,7 @@ exports:
                        '_$s5Orion17_AnyGlueClassHookP5_supryXlXpvgZTj', '_$s5Orion17_AnyGlueClassHookP5_supryXlXpvgZTq', 
                        '_$s5Orion17_AnyGlueClassHookP5_supryXlvgTj', '_$s5Orion17_AnyGlueClassHookP5_supryXlvgTq', 
                        '_$s5Orion17_AnyGlueClassHookTL', '_$s5Orion17_ClassHookBuilderV03addC0__02isB6Method10completiony10ObjectiveC8SelectorV_xSbyxctlF', 
+                       '_$s5Orion17_ClassHookBuilderV16addDeinitializer2to7getOrig03setI0yxm_yyp_10ObjectiveC8SelectorVtXCycyq_ctAA05_GluebC0Rzr0_lF', 
                        '_$s5Orion17_ClassHookBuilderVMa', '_$s5Orion17_ClassHookBuilderVMn', 
                        '_$s5Orion17_ClassHookBuilderVN', '_$s5Orion17_GlueFunctionHookMp', 
                        '_$s5Orion17_GlueFunctionHookP04origC04CodeQzvMZTj', '_$s5Orion17_GlueFunctionHookP04origC04CodeQzvMZTq', 
@@ -167,5 +175,6 @@ exports:
                        '_$s8OrigType5Orion14_GlueClassHookPTl', '_$s8OrigType5Orion17_GlueFunctionHookPTl', 
                        '_$s8SuprType5Orion14_GlueClassHookPTl', '_$sSo8NSObjectC5OrionE2as9interface8protocolxxm_So8ProtocolCSgtlFZ', 
                        '_$sSo8NSObjectC5OrionE2as9interfacexxm_tlF', '_$sSo8NSObjectC5OrionE5alloc9interfacexxm_tlFZ', 
-                       _OrionVersionNumber, _OrionVersionString, __orion_with_objc_super ]
+                       _OrionVersionNumber, _OrionVersionString, __orion_call_dealloc, 
+                       __orion_call_super_dealloc, __orion_with_objc_super ]
 ...

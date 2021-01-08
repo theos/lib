@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
 // swift-module-flags: -target arm64e-apple-ios12.2 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Orion
 import Foundation
 @_exported import Orion
@@ -27,6 +27,23 @@ public enum Backends {
 }
 @inlinable public func _indirectFatalError(_ message: @autoclosure () -> Swift.String = "", file: Swift.StaticString = #file, line: Swift.UInt = #line) -> Swift.Never {
     fatalError(message(), file: file, line: line)
+}
+public enum DeinitPolicy {
+  case callOrig
+  case callSupr
+  public static func == (a: Orion.DeinitPolicy, b: Orion.DeinitPolicy) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+extension _ClassHookBuilder {
+  public typealias Deinitializer = @convention(c) (Any, ObjectiveC.Selector) -> Swift.Void
+  public mutating func addDeinitializer<T, Code>(to classHook: T.Type, getOrig: @escaping () -> Orion._ClassHookBuilder.Deinitializer, setOrig: @escaping (Code) -> Swift.Void) where T : Orion._GlueClassHook
+}
+extension _GlueClassHook {
+  public func deinitOrigError(file: Swift.StaticString = #file, line: Swift.UInt = #line) -> Swift.Never
+  public func deinitSuprError(file: Swift.StaticString = #file, line: Swift.UInt = #line) -> Swift.Never
 }
 @dynamicMemberLookup public struct Ivars<IvarType> {
   public init(_ object: Swift.AnyObject)
@@ -134,6 +151,7 @@ public protocol ClassHookProtocol : AnyObject, Orion.AnyHook {
   static var protocols: [ObjectiveC.`Protocol`] { get }
   var target: Self.Target { get }
   init(target: Self.Target)
+  func deinitializer() -> Orion.DeinitPolicy
 }
 extension ClassHookProtocol {
   public static var targetName: Swift.String {
@@ -148,6 +166,7 @@ extension ClassHookProtocol {
   public static var protocols: [ObjectiveC.`Protocol`] {
     get
   }
+  public func deinitializer() -> Orion.DeinitPolicy
 }
 @objcMembers open class ClassHookClass<Target> where Target : AnyObject {
   final public let target: Target
@@ -298,6 +317,8 @@ extension Backends {
 extension Backends.Substrate {
   public func apply(hooks: [Orion.HookDescriptor])
 }
+extension Orion.DeinitPolicy : Swift.Equatable {}
+extension Orion.DeinitPolicy : Swift.Hashable {}
 extension Orion.Property.Assign : Swift.Equatable {}
 extension Orion.Property.Assign : Swift.Hashable {}
 extension Orion.Property.Atomicity : Swift.Equatable {}
