@@ -25,9 +25,9 @@ public protocol DefaultBackend : Orion.Backend {
 }
 public enum Backends {
 }
-@inlinable public func _indirectFatalError(_ message: @autoclosure () -> Swift.String = "", file: Swift.StaticString = #file, line: Swift.UInt = #line) -> Swift.Never {
-    fatalError(message(), file: file, line: line)
-}
+public typealias OrionErrorHandler = (@autoclosure () -> Swift.String, Swift.StaticString, Swift.UInt) -> Swift.Never
+public func updateOrionErrorHandler(_ update: (@escaping Orion.OrionErrorHandler) -> Orion.OrionErrorHandler)
+public func orionError(_ message: @autoclosure () -> Swift.String, file: Swift.StaticString = #file, line: Swift.UInt = #line) -> Swift.Never
 public enum DeinitPolicy {
   case callOrig
   case callSupr
@@ -100,7 +100,7 @@ extension FunctionHookProtocol {
   @_transparent public var orig: Self {
     @_transparent get {
         guard let unwrapped = (self as? _AnyGlueFunctionHook)?._orig as? Self
-            else { _indirectFatalError("Could not get orig") }
+            else { orionError("Could not get orig") }
         return unwrapped
     }
   }
@@ -190,28 +190,28 @@ extension ClassHookProtocol {
   @_transparent public var orig: Self {
     @_transparent get {
         guard let unwrapped = (self as? _AnyGlueClassHook)?._orig as? Self
-            else { _indirectFatalError("Could not get orig") }
+            else { orionError("Could not get orig") }
         return unwrapped
     }
   }
   @_transparent public static var orig: Self.Type {
     @_transparent get {
         guard let unwrapped = (self as? _AnyGlueClassHook.Type)?._orig as? Self.Type
-            else { _indirectFatalError("Could not get orig") }
+            else { orionError("Could not get orig") }
         return unwrapped
     }
   }
   @_transparent public var supr: Self {
     @_transparent get {
         guard let unwrapped = (self as? _AnyGlueClassHook)?._supr as? Self
-            else { _indirectFatalError("Could not get supr") }
+            else { orionError("Could not get supr") }
         return unwrapped
     }
   }
   @_transparent public static var supr: Self.Type {
     @_transparent get {
         guard let unwrapped = (self as? _AnyGlueClassHook.Type)?._supr as? Self.Type
-            else { _indirectFatalError("Could not get supr") }
+            else { orionError("Could not get supr") }
         return unwrapped
     }
   }
