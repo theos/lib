@@ -9,12 +9,12 @@ extension _GlueClassHook {
   public func callSuper<ReturnType, SuperType>(_ type: SuperType.Type, send: (SuperType, Swift.UnsafeRawPointer) -> ReturnType) -> ReturnType
 }
 public enum HookDescriptor {
-  public typealias Completion = (Swift.UnsafeMutableRawPointer) -> Swift.Void
-  case method(cls: Swift.AnyClass, sel: ObjectiveC.Selector, replacement: Swift.UnsafeMutableRawPointer, completion: Orion.HookDescriptor.Completion)
-  case function(function: Orion.Function, replacement: Swift.UnsafeMutableRawPointer, completion: Orion.HookDescriptor.Completion)
+  public typealias SaveOrig = (Swift.UnsafeMutableRawPointer) -> Swift.Void
+  case method(cls: Swift.AnyClass, sel: ObjectiveC.Selector, replacement: Swift.UnsafeMutableRawPointer, saveOrig: Orion.HookDescriptor.SaveOrig)
+  case function(function: Orion.Function, replacement: Swift.UnsafeMutableRawPointer, saveOrig: Orion.HookDescriptor.SaveOrig)
 }
 public protocol Backend {
-  func apply(hooks: [Orion.HookDescriptor])
+  func apply(descriptors: [Orion.HookDescriptor])
 }
 extension Backend {
   public func hookFunction(_ function: Orion.Function, replacement: Swift.UnsafeMutableRawPointer) -> Swift.UnsafeMutableRawPointer
@@ -25,9 +25,24 @@ public protocol DefaultBackend : Orion.Backend {
 }
 public enum Backends {
 }
+public protocol HookGroup {
+  func groupDidActivate()
+}
+extension HookGroup {
+  public func groupDidActivate()
+}
+public struct DefaultGroup : Orion.HookGroup {
+}
+extension HookGroup {
+  public static var isActive: Swift.Bool {
+    get
+  }
+  public func activate()
+}
 public typealias OrionErrorHandler = (@autoclosure () -> Swift.String, Swift.StaticString, Swift.UInt) -> Swift.Never
 public func updateOrionErrorHandler(_ update: (@escaping Orion.OrionErrorHandler) -> Orion.OrionErrorHandler)
 public func orionError(_ message: @autoclosure () -> Swift.String, file: Swift.StaticString = #file, line: Swift.UInt = #line) -> Swift.Never
+infix operator !! : CastingPrecedence
 public enum DeinitPolicy {
   case callOrig
   case callSupr
@@ -57,20 +72,48 @@ extension _GlueClassHook {
     nonmutating set
   }
 }
+public protocol OptionalProtocol {
+  associatedtype Wrapped
+  init(optional: Self.Wrapped?)
+}
+extension Optional : Orion.OptionalProtocol {
+  public init(optional: Wrapped?)
+}
+extension Ivars where IvarType : Orion.OptionalProtocol, IvarType.Wrapped : AnyObject {
+  public enum WeakStorage {
+    case weak
+    public static func == (a: Orion.Ivars<IvarType>.WeakStorage, b: Orion.Ivars<IvarType>.WeakStorage) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public init(_ object: Swift.AnyObject, _ storage: Orion.Ivars<IvarType>.WeakStorage)
+}
+extension Ivars where IvarType : Orion.OptionalProtocol, IvarType.Wrapped : AnyObject {
+  public subscript(safelyAccessing ivarName: Swift.String) -> IvarType? {
+    get
+    nonmutating set
+  }
+  public subscript(dynamicMember ivarName: Swift.String) -> IvarType {
+    get
+    nonmutating set
+  }
+}
 public protocol Tweak {
   init()
   func tweakDidActivate()
 }
 extension Tweak {
-  public func activate<BackendType>(backend: BackendType, hooks: [Orion._AnyGlueHook.Type]) where BackendType : Orion.Backend
+  public static func activate<BackendType>(backend: BackendType, hooks: [Orion._AnyGlueHook.Type]) where BackendType : Orion.Backend
   public func tweakDidActivate()
 }
 public protocol TweakWithBackend : Orion.Tweak {
   associatedtype BackendType : Orion.Backend
-  var backend: Self.BackendType { get }
+  static var backend: Self.BackendType { get }
 }
 extension TweakWithBackend {
-  public func activate(hooks: [Orion._AnyGlueHook.Type])
+  public static func activate(hooks: [Orion._AnyGlueHook.Type])
 }
 public struct DefaultTweak : Orion.Tweak {
   public init()
@@ -83,9 +126,24 @@ public enum Function : Swift.CustomStringConvertible {
     get
   }
 }
+@_hasMissingDesignatedInitializers final public class _FunctionHookStorage {
+  @objc deinit
+}
 public protocol FunctionHookProtocol : AnyObject, Orion.AnyHook {
   static var target: Orion.Function { get }
+  static var _storage: Orion._FunctionHookStorage { get }
   init()
+}
+extension FunctionHookProtocol {
+  public static var _storage: Orion._FunctionHookStorage {
+    get
+  }
+  public static func _initializeStorage() -> Orion._FunctionHookStorage
+}
+extension FunctionHookProtocol {
+  public static var group: Self.Group {
+    get
+  }
 }
 open class FunctionHookClass {
   required public init()
@@ -125,27 +183,40 @@ extension Backends {
   }
 }
 extension Backends.Internal {
-  public func apply(hooks: [Orion.HookDescriptor])
+  public func apply(descriptors: [Orion.HookDescriptor])
 }
-public protocol AnyHook {
+public protocol AnyHookBase {
   static func hookWillActivate() -> Swift.Bool
   static func hookDidActivate()
 }
-extension AnyHook {
+public protocol AnyHook : Orion.AnyHookBase {
+  associatedtype Group : Orion.HookGroup = Orion.DefaultGroup
+  static var group: Self.Group { get }
+}
+extension AnyHookBase {
   public static func hookWillActivate() -> Swift.Bool
   public static func hookDidActivate()
 }
-public protocol _AnyGlueHook : Orion.AnyHook {
+public protocol _AnyGlueHook : Orion.AnyHookBase {
   static func activate() -> [Orion.HookDescriptor]
+  static var groupType: Orion.HookGroup.Type { get }
+}
+extension _AnyGlueHook where Self : Orion.AnyHook {
+  public static var groupType: Orion.HookGroup.Type {
+    get
+  }
 }
 public enum SubclassMode {
   case none
   case createSubclass
   case createSubclassNamed(Swift.String)
 }
+@_hasMissingDesignatedInitializers final public class _ClassHookStorage {
+  @objc deinit
+}
 public protocol ClassHookProtocol : AnyObject, Orion.AnyHook {
   associatedtype Target : AnyObject
-  static var _target: Self.Target.Type { get }
+  static var _storage: Orion._ClassHookStorage { get }
   static var targetName: Swift.String { get }
   static var subclassMode: Orion.SubclassMode { get }
   static var protocols: [ObjectiveC.`Protocol`] { get }
@@ -157,7 +228,7 @@ extension ClassHookProtocol {
   public static var targetName: Swift.String {
     get
   }
-  public static var _target: Self.Target.Type {
+  public static var _storage: Orion._ClassHookStorage {
     get
   }
   public static var subclassMode: Orion.SubclassMode {
@@ -175,10 +246,15 @@ extension ClassHookProtocol {
 }
 public typealias ClassHook<Target> = Orion.ClassHookClass<Target> & Orion.ClassHookProtocol where Target : AnyObject
 extension ClassHookProtocol {
+  public static var group: Self.Group {
+    get
+  }
+}
+extension ClassHookProtocol {
   public static var target: Self.Target.Type {
     get
   }
-  public static func _initializeTargetType() -> Self.Target.Type
+  public static func _initializeStorage() -> Orion._ClassHookStorage
 }
 public protocol _AnyGlueClassHook {
   static var _orig: Swift.AnyClass { get }
@@ -217,7 +293,7 @@ extension ClassHookProtocol {
   }
 }
 public struct _ClassHookBuilder {
-  public mutating func addHook<Code>(_ sel: ObjectiveC.Selector, _ replacement: Code, isClassMethod: Swift.Bool, completion: @escaping (Code) -> Swift.Void)
+  public mutating func addHook<Code>(_ sel: ObjectiveC.Selector, _ replacement: Code, isClassMethod: Swift.Bool, saveOrig: @escaping (Code) -> Swift.Void)
 }
 public protocol _GlueClassHook : Orion.ClassHookProtocol, Orion._AnyGlueClassHook, Orion._AnyGlueHook {
   associatedtype OrigType : Orion.ClassHookProtocol where Self.Target == Self.OrigType.Target, Self.OrigType.Target == Self.SuprType.Target
@@ -315,7 +391,7 @@ extension Backends {
   }
 }
 extension Backends.Substrate {
-  public func apply(hooks: [Orion.HookDescriptor])
+  public func apply(descriptors: [Orion.HookDescriptor])
 }
 extension Orion.DeinitPolicy : Swift.Equatable {}
 extension Orion.DeinitPolicy : Swift.Hashable {}
