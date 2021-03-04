@@ -4,7 +4,7 @@
 import Foundation
 @_exported import Orion
 import Swift
-extension _GlueClassHook {
+extension _GlueClassHookTrampoline {
   public static func callSuper<ReturnType, SuperType>(_ type: SuperType.Type, send: (SuperType, Swift.UnsafeRawPointer) -> ReturnType) -> ReturnType
   public func callSuper<ReturnType, SuperType>(_ type: SuperType.Type, send: (SuperType, Swift.UnsafeRawPointer) -> ReturnType) -> ReturnType
 }
@@ -42,7 +42,23 @@ extension HookGroup {
 public typealias OrionErrorHandler = (@autoclosure () -> Swift.String, Swift.StaticString, Swift.UInt) -> Swift.Never
 public func updateOrionErrorHandler(_ update: (@escaping Orion.OrionErrorHandler) -> Orion.OrionErrorHandler)
 public func orionError(_ message: @autoclosure () -> Swift.String, file: Swift.StaticString = #file, line: Swift.UInt = #line) -> Swift.Never
+@inlinable internal func alwaysFalse() -> Swift.Bool { false }
+@_transparent @inlinable internal func disableRecursionCheck() {
+    if alwaysFalse() {
+        orionError("should never be executed")
+    }
+}
 infix operator !! : CastingPrecedence
+extension Optional {
+  @inlinable internal static func !! (lhs: Swift.Optional<Wrapped>, message: @autoclosure () -> Swift.String) -> Wrapped {
+        switch lhs {
+        case .some(let unwrapped):
+            return unwrapped
+        case .none:
+            orionError(message())
+        }
+    }
+}
 public enum DeinitPolicy {
   case callOrig
   case callSupr
@@ -52,11 +68,11 @@ public enum DeinitPolicy {
   }
   public func hash(into hasher: inout Swift.Hasher)
 }
-extension _ClassHookBuilder {
+extension _GlueClassHookBuilder {
   public typealias Deinitializer = @convention(c) (Any, ObjectiveC.Selector) -> Swift.Void
-  public mutating func addDeinitializer<T, Code>(to classHook: T.Type, getOrig: @escaping () -> Orion._ClassHookBuilder.Deinitializer, setOrig: @escaping (Code) -> Swift.Void) where T : Orion._GlueClassHook
+  public mutating func addDeinitializer<T, Code>(to classHook: T.Type, getOrig: @escaping () -> Orion._GlueClassHookBuilder.Deinitializer, setOrig: @escaping (Code) -> Swift.Void) where T : Orion.ClassHookProtocol
 }
-extension _GlueClassHook {
+extension _GlueClassHookTrampoline {
   public func deinitOrigError(file: Swift.StaticString = #file, line: Swift.UInt = #line) -> Swift.Never
   public func deinitSuprError(file: Swift.StaticString = #file, line: Swift.UInt = #line) -> Swift.Never
 }
@@ -105,7 +121,7 @@ public protocol Tweak {
   func tweakDidActivate()
 }
 extension Tweak {
-  public static func activate<BackendType>(backend: BackendType, hooks: [Orion._AnyGlueHook.Type]) where BackendType : Orion.Backend
+  public static func activate<BackendType>(backend: BackendType, hooks: [Orion._GlueAnyHook.Type]) where BackendType : Orion.Backend
   public func tweakDidActivate()
 }
 public protocol TweakWithBackend : Orion.Tweak {
@@ -113,7 +129,7 @@ public protocol TweakWithBackend : Orion.Tweak {
   static var backend: Self.BackendType { get }
 }
 extension TweakWithBackend {
-  public static func activate(hooks: [Orion._AnyGlueHook.Type])
+  public static func activate(hooks: [Orion._GlueAnyHook.Type])
 }
 public struct DefaultTweak : Orion.Tweak {
   public init()
@@ -126,54 +142,28 @@ public enum Function : Swift.CustomStringConvertible {
     get
   }
 }
-@_hasMissingDesignatedInitializers final public class _FunctionHookStorage {
-  @objc deinit
-}
 public protocol FunctionHookProtocol : AnyObject, Orion.AnyHook {
+  associatedtype _Glue : Orion._GlueFunctionHook = Orion._GlueFunctionHookPlaceholder<Self> where Self == Self._Glue.HookType
   static var target: Orion.Function { get }
-  static var _storage: Orion._FunctionHookStorage { get }
   init()
-}
-extension FunctionHookProtocol {
-  public static var _storage: Orion._FunctionHookStorage {
-    get
-  }
-  public static func _initializeStorage() -> Orion._FunctionHookStorage
-}
-extension FunctionHookProtocol {
-  public static var group: Self.Group {
-    get
-  }
 }
 open class FunctionHookClass {
   required public init()
   @objc deinit
 }
 public typealias FunctionHook = Orion.FunctionHookClass & Orion.FunctionHookProtocol
-public protocol _AnyGlueFunctionHook {
-  static var _orig: Swift.AnyClass { get }
-  var _orig: Swift.AnyObject { get }
-}
 extension FunctionHookProtocol {
   @_transparent public var orig: Self {
     @_transparent get {
-        guard let unwrapped = (self as? _AnyGlueFunctionHook)?._orig as? Self
+        disableRecursionCheck()
+        guard let unwrapped = _Glue.OrigType() as? Self
             else { orionError("Could not get orig") }
         return unwrapped
     }
   }
 }
-public protocol _GlueFunctionHook : Orion.FunctionHookProtocol, Orion._AnyGlueFunctionHook, Orion._AnyGlueHook {
-  associatedtype Code
-  static var origFunction: Self.Code { get set }
-  associatedtype OrigType : Orion.FunctionHookProtocol
-}
-extension _GlueFunctionHook {
-  public static func activate() -> [Orion.HookDescriptor]
-  public static var _orig: Swift.AnyClass {
-    get
-  }
-  public var _orig: Swift.AnyObject {
+extension FunctionHookProtocol {
+  public static var group: Self.Group {
     get
   }
 }
@@ -185,38 +175,96 @@ extension Backends {
 extension Backends.Internal {
   public func apply(descriptors: [Orion.HookDescriptor])
 }
-public protocol AnyHookBase {
+public protocol AnyHook {
+  associatedtype Group : Orion.HookGroup = Orion.DefaultGroup
+  static var group: Self.Group { get }
   static func hookWillActivate() -> Swift.Bool
   static func hookDidActivate()
 }
-public protocol AnyHook : Orion.AnyHookBase {
-  associatedtype Group : Orion.HookGroup = Orion.DefaultGroup
-  static var group: Self.Group { get }
-}
-extension AnyHookBase {
+extension AnyHook {
   public static func hookWillActivate() -> Swift.Bool
   public static func hookDidActivate()
 }
-public protocol _AnyGlueHook : Orion.AnyHookBase {
+public protocol _GlueAnyHook {
   static func activate() -> [Orion.HookDescriptor]
+  static func hookWillActivate() -> Swift.Bool
+  static func hookDidActivate()
   static var groupType: Orion.HookGroup.Type { get }
 }
-extension _AnyGlueHook where Self : Orion.AnyHook {
+@_hasMissingDesignatedInitializers final public class _GlueFunctionHookStorage {
+  @objc deinit
+}
+public enum _GlueFunctionHookPlaceholder<HookType> : Orion._GlueFunctionHook where HookType : Orion.FunctionHookProtocol {
+  public typealias OrigType = HookType
+  public static var origFunction: Swift.Void {
+    get
+    set
+  }
+  public static var storage: Orion._GlueFunctionHookStorage {
+    get
+  }
+  public static func activate(withClassHookBuilder builder: inout Orion._GlueClassHookBuilder)
+  public typealias Code = Swift.Void
+}
+public protocol _GlueFunctionHookTrampoline : Orion.FunctionHookProtocol {
+}
+public protocol _GlueFunctionHook : Orion._GlueAnyHook {
+  associatedtype HookType : Orion.FunctionHookProtocol
+  associatedtype OrigType : Orion.FunctionHookProtocol
+  associatedtype Code
+  static var storage: Orion._GlueFunctionHookStorage { get }
+  static var origFunction: Self.Code { get set }
+}
+extension _GlueFunctionHook {
+  public static func activate() -> [Orion.HookDescriptor]
   public static var groupType: Orion.HookGroup.Type {
     get
   }
+  public static func hookWillActivate() -> Swift.Bool
+  public static func hookDidActivate()
+  public static func initializeStorage() -> Orion._GlueFunctionHookStorage
+}
+@_hasMissingDesignatedInitializers final public class _GlueClassHookStorage {
+  @objc deinit
+}
+public enum _GlueClassHookPlaceholder<HookType> : Orion._GlueClassHook where HookType : Orion.ClassHookProtocol {
+  public typealias OrigType = HookType
+  public typealias SuprType = HookType
+  public static var storage: Orion._GlueClassHookStorage {
+    get
+  }
+  public static func activate(withClassHookBuilder builder: inout Orion._GlueClassHookBuilder)
+}
+public protocol _GlueClassHookTrampoline : Orion.ClassHookProtocol {
+}
+public struct _GlueClassHookBuilder {
+  public mutating func addHook<Code>(_ sel: ObjectiveC.Selector, _ replacement: Code, isClassMethod: Swift.Bool, saveOrig: @escaping (Code) -> Swift.Void)
+}
+public protocol _GlueClassHook : Orion._GlueAnyHook {
+  associatedtype HookType : Orion.ClassHookProtocol where Self.HookType.Target == Self.OrigType.Target
+  associatedtype OrigType : Orion.ClassHookProtocol where Self.OrigType.Target == Self.SuprType.Target, Self.HookType._Glue.OrigType.Target == Self.HookType._Glue.SuprType.Target, Self.OrigType._Glue.OrigType.Target == Self.OrigType._Glue.SuprType.Target, Self.SuprType._Glue.OrigType.Target == Self.SuprType._Glue.SuprType.Target
+  associatedtype SuprType : Orion.ClassHookProtocol where Self.SuprType.Target == Self.HookType._Glue.OrigType.Target, Self.HookType._Glue.SuprType.Target == Self.OrigType._Glue.OrigType.Target, Self.OrigType._Glue.SuprType.Target == Self.SuprType._Glue.OrigType.Target
+  static var storage: Orion._GlueClassHookStorage { get }
+  static func activate(withClassHookBuilder builder: inout Orion._GlueClassHookBuilder)
+}
+extension _GlueClassHook {
+  public static func addMethod<Code>(_ selector: ObjectiveC.Selector, _ implementation: Code, isClassMethod: Swift.Bool)
+  public static func activate() -> [Orion.HookDescriptor]
+  public static var groupType: Orion.HookGroup.Type {
+    get
+  }
+  public static func hookWillActivate() -> Swift.Bool
+  public static func hookDidActivate()
+  public static func initializeStorage() -> Orion._GlueClassHookStorage
 }
 public enum SubclassMode {
   case none
   case createSubclass
   case createSubclassNamed(Swift.String)
 }
-@_hasMissingDesignatedInitializers final public class _ClassHookStorage {
-  @objc deinit
-}
 public protocol ClassHookProtocol : AnyObject, Orion.AnyHook {
   associatedtype Target : AnyObject
-  static var _storage: Orion._ClassHookStorage { get }
+  associatedtype _Glue : Orion._GlueClassHook = Orion._GlueClassHookPlaceholder<Self> where Self == Self._Glue.HookType
   static var targetName: Swift.String { get }
   static var subclassMode: Orion.SubclassMode { get }
   static var protocols: [ObjectiveC.`Protocol`] { get }
@@ -226,9 +274,6 @@ public protocol ClassHookProtocol : AnyObject, Orion.AnyHook {
 }
 extension ClassHookProtocol {
   public static var targetName: Swift.String {
-    get
-  }
-  public static var _storage: Orion._ClassHookStorage {
     get
   }
   public static var subclassMode: Orion.SubclassMode {
@@ -246,75 +291,48 @@ extension ClassHookProtocol {
 }
 public typealias ClassHook<Target> = Orion.ClassHookClass<Target> & Orion.ClassHookProtocol where Target : AnyObject
 extension ClassHookProtocol {
-  public static var group: Self.Group {
-    get
-  }
-}
-extension ClassHookProtocol {
-  public static var target: Self.Target.Type {
-    get
-  }
-  public static func _initializeStorage() -> Orion._ClassHookStorage
-}
-public protocol _AnyGlueClassHook {
-  static var _orig: Swift.AnyClass { get }
-  var _orig: Swift.AnyObject { get }
-  static var _supr: Swift.AnyClass { get }
-  var _supr: Swift.AnyObject { get }
-}
-extension ClassHookProtocol {
   @_transparent public var orig: Self {
     @_transparent get {
-        guard let unwrapped = (self as? _AnyGlueClassHook)?._orig as? Self
+        disableRecursionCheck()
+        guard let unwrapped = _Glue.OrigType(target: target) as? Self
             else { orionError("Could not get orig") }
         return unwrapped
     }
   }
   @_transparent public static var orig: Self.Type {
     @_transparent get {
-        guard let unwrapped = (self as? _AnyGlueClassHook.Type)?._orig as? Self.Type
+        disableRecursionCheck()
+        guard let unwrapped = _Glue.OrigType.self as? Self.Type
             else { orionError("Could not get orig") }
         return unwrapped
     }
   }
   @_transparent public var supr: Self {
     @_transparent get {
-        guard let unwrapped = (self as? _AnyGlueClassHook)?._supr as? Self
+        disableRecursionCheck()
+        guard let unwrapped = _Glue.SuprType(target: target) as? Self
             else { orionError("Could not get supr") }
         return unwrapped
     }
   }
   @_transparent public static var supr: Self.Type {
     @_transparent get {
-        guard let unwrapped = (self as? _AnyGlueClassHook.Type)?._supr as? Self.Type
+        disableRecursionCheck()
+        guard let unwrapped = _Glue.SuprType.self as? Self.Type
             else { orionError("Could not get supr") }
         return unwrapped
     }
   }
 }
-public struct _ClassHookBuilder {
-  public mutating func addHook<Code>(_ sel: ObjectiveC.Selector, _ replacement: Code, isClassMethod: Swift.Bool, saveOrig: @escaping (Code) -> Swift.Void)
+extension ClassHookProtocol {
+  public static var target: Self.Target.Type {
+    get
+  }
 }
-public protocol _GlueClassHook : Orion.ClassHookProtocol, Orion._AnyGlueClassHook, Orion._AnyGlueHook {
-  associatedtype OrigType : Orion.ClassHookProtocol where Self.Target == Self.OrigType.Target, Self.OrigType.Target == Self.SuprType.Target
-  associatedtype SuprType : Orion.ClassHookProtocol
-  static func activate(withClassHookBuilder builder: inout Orion._ClassHookBuilder)
-}
-extension _GlueClassHook {
-  public static var _orig: Swift.AnyClass {
+extension ClassHookProtocol {
+  public static var group: Self.Group {
     get
   }
-  public var _orig: Swift.AnyObject {
-    get
-  }
-  public static var _supr: Swift.AnyClass {
-    get
-  }
-  public var _supr: Swift.AnyObject {
-    get
-  }
-  public static func addMethod<Code>(_ selector: ObjectiveC.Selector, _ implementation: Code, isClassMethod: Swift.Bool)
-  public static func activate() -> [Orion.HookDescriptor]
 }
 @propertyWrapper public struct Property<T> {
   @available(*, unavailable, message: "@Property is only available on ClassHook types")
