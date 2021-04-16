@@ -1,6 +1,6 @@
 --- !tapi-tbd-v3
 archs:           [ arm64, arm64e ]
-uuids:           [ 'arm64: 7B8729D1-83C1-36F1-A359-BFBB501E4621', 'arm64e: DC7E4ADE-2863-3176-AB43-440752131711' ]
+uuids:           [ 'arm64: 7A142F3C-73FD-3FB9-BDEE-F731B6A510D4', 'arm64e: 29E6A1A6-1D3E-3088-88AA-ED0F8955CFCF' ]
 platform:        ios
 install-name:    '/Library/Frameworks/Orion.framework/Orion'
 swift-abi-version: 7
@@ -120,12 +120,21 @@ exports:
                        '_$s5Orion24_GlueFunctionHookStorageCMm', '_$s5Orion24_GlueFunctionHookStorageCMn', 
                        '_$s5Orion24_GlueFunctionHookStorageCMo', '_$s5Orion24_GlueFunctionHookStorageCMu', 
                        '_$s5Orion24_GlueFunctionHookStorageCN', '_$s5Orion24_GlueFunctionHookStorageCfD', 
-                       '_$s5Orion24_GlueFunctionHookStorageCfd', '_$s5Orion25_GlueClassHookPlaceholderO7storageAA01_bcD7StorageCvgZ', 
+                       '_$s5Orion24_GlueFunctionHookStorageCfd', '_$s5Orion25_GlueClassHookPlaceholderO0D4TypeC6targetAESo8NSObjectC_tcfC', 
+                       '_$s5Orion25_GlueClassHookPlaceholderO0D4TypeC6targetAESo8NSObjectC_tcfc', 
+                       '_$s5Orion25_GlueClassHookPlaceholderO0D4TypeCAA03AnyD0AAMc', 
+                       '_$s5Orion25_GlueClassHookPlaceholderO0D4TypeCAA03AnyD0AAWP', 
+                       '_$s5Orion25_GlueClassHookPlaceholderO0D4TypeCAA0cD8ProtocolAAMc', 
+                       '_$s5Orion25_GlueClassHookPlaceholderO0D4TypeCAA0cD8ProtocolAAWP', 
+                       '_$s5Orion25_GlueClassHookPlaceholderO0D4TypeCMa', '_$s5Orion25_GlueClassHookPlaceholderO0D4TypeCMm', 
+                       '_$s5Orion25_GlueClassHookPlaceholderO0D4TypeCMn', '_$s5Orion25_GlueClassHookPlaceholderO0D4TypeCMo', 
+                       '_$s5Orion25_GlueClassHookPlaceholderO0D4TypeCN', '_$s5Orion25_GlueClassHookPlaceholderO0D4TypeCfD', 
+                       '_$s5Orion25_GlueClassHookPlaceholderO0D4TypeCfd', '_$s5Orion25_GlueClassHookPlaceholderO7storageAA01_bcD7StorageCvgZ', 
                        '_$s5Orion25_GlueClassHookPlaceholderO8activate04withcD7BuilderyAA01_bcdH0Vz_tFZ', 
+                       '_$s5Orion25_GlueClassHookPlaceholderOAA01_b3AnyD0AAMc', '_$s5Orion25_GlueClassHookPlaceholderOAA01_b3AnyD0AAWP', 
+                       '_$s5Orion25_GlueClassHookPlaceholderOAA01_bcD0AAMc', '_$s5Orion25_GlueClassHookPlaceholderOAA01_bcD0AAWP', 
                        '_$s5Orion25_GlueClassHookPlaceholderOMa', '_$s5Orion25_GlueClassHookPlaceholderOMn', 
-                       '_$s5Orion25_GlueClassHookPlaceholderOyxGAA01_b3AnyD0AAMc', 
-                       '_$s5Orion25_GlueClassHookPlaceholderOyxGAA01_b3AnyD0AAWP', 
-                       '_$s5Orion25_GlueClassHookPlaceholderOyxGAA01_bcD0AAMc', '_$s5Orion27_GlueFunctionHookTrampolineMp', 
+                       '_$s5Orion25_GlueClassHookPlaceholderON', '_$s5Orion27_GlueFunctionHookTrampolineMp', 
                        '_$s5Orion27_GlueFunctionHookTrampolinePAA0cD8ProtocolTb', 
                        '_$s5Orion27_GlueFunctionHookTrampolineTL', '_$s5Orion28_GlueFunctionHookPlaceholderO04origC0ytvMZ', 
                        '_$s5Orion28_GlueFunctionHookPlaceholderO04origC0ytvgZ', '_$s5Orion28_GlueFunctionHookPlaceholderO04origC0ytvsZ', 
