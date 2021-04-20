@@ -1,6 +1,6 @@
 --- !tapi-tbd-v3
 archs:           [ arm64, arm64e ]
-uuids:           [ 'arm64: 7A142F3C-73FD-3FB9-BDEE-F731B6A510D4', 'arm64e: 29E6A1A6-1D3E-3088-88AA-ED0F8955CFCF' ]
+uuids:           [ 'arm64: CD0C5420-63F8-310B-AFB1-E9BAAFB73694', 'arm64e: 9A3736FC-F23C-3F72-9A47-2F7426D01550' ]
 platform:        ios
 install-name:    '/Library/Frameworks/Orion.framework/Orion'
 swift-abi-version: 7
@@ -112,6 +112,7 @@ exports:
                        '_$s5Orion21_GlueClassHookStorageCN', '_$s5Orion21_GlueClassHookStorageCfD', 
                        '_$s5Orion21_GlueClassHookStorageCfd', '_$s5Orion21disableRecursionCheckyyF', 
                        '_$s5Orion24_GlueClassHookTrampolineMp', '_$s5Orion24_GlueClassHookTrampolinePAA0cD8ProtocolTb', 
+                       '_$s5Orion24_GlueClassHookTrampolinePAAE14trampOrigError4file4lines5NeverOs12StaticStringV_SutF', 
                        '_$s5Orion24_GlueClassHookTrampolinePAAE15deinitOrigError4file4lines5NeverOs12StaticStringV_SutF', 
                        '_$s5Orion24_GlueClassHookTrampolinePAAE15deinitSuprError4file4lines5NeverOs12StaticStringV_SutF', 
                        '_$s5Orion24_GlueClassHookTrampolinePAAE9callSuper_4sendqd__qd_0_m_qd__qd_0__SVtXEtr0_lF', 

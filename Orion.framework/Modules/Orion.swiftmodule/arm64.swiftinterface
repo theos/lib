@@ -75,6 +75,7 @@ extension _GlueClassHookBuilder {
 extension _GlueClassHookTrampoline {
   public func deinitOrigError(file: Swift.StaticString = #file, line: Swift.UInt = #line) -> Swift.Never
   public func deinitSuprError(file: Swift.StaticString = #file, line: Swift.UInt = #line) -> Swift.Never
+  public func trampOrigError(file: Swift.StaticString = #file, line: Swift.UInt = #line) -> Swift.Never
 }
 @dynamicMemberLookup public struct Ivars<IvarType> {
   public init(_ object: Swift.AnyObject)
