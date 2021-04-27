@@ -16,5 +16,5 @@ exports:
                             _HBPackageTableCell, _HBRootListController,
                             _HBSpinnerTableCell, _HBStepperTableCell,
                             _HBSupportController, _HBTintedTableCell,
-                            _HBTwitterCell ]
+                            _HBTwitterAPIClient, _HBTwitterCell ]
 ...

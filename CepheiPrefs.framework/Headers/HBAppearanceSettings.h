@@ -15,21 +15,15 @@ typedef NS_ENUM(NSUInteger, HBAppearanceSettingsLargeTitleStyle) {
 
 	/// Never display a large title.
 	HBAppearanceSettingsLargeTitleStyleNever
-};
+} NS_SWIFT_NAME(HBAppearanceSettings.LargeTitleStyle);
 
-/// The `HBAppearanceSettings` class in `CepheiPrefs` provides a model object read by other
-/// components of Cephei to determine colors to use in the user interface.
+/// The HBAppearanceSettings class in CepheiPrefs provides a model object read by other
+/// components of Cephei to determine colors and other appearence settings to use in the user
+/// interface.
 ///
 /// Appearance settings are typically set on a view controller, via the
 /// -[PSListController(HBTintAdditions) hb_appearanceSettings] property. This is automatically
 /// managed by Cephei and provided to view controllers as they are pushed onto the stack.
-///
-/// This interface replaces the previous method that worked in the opposite way – HBListController
-/// would work backwards to find a view controller with appearance settings defined. This was not
-/// robust, created messy code within Cephei, and can cause a mix of colors if a view controller
-/// with different settings to the prior one is pushed.
-///
-/// Use of the old properties on HBListController will cause a warning to be logged.
 ///
 /// Most commonly, the API will be used by setting the hb_appearanceSettings property from the init
 /// method. The following example sets the tint color, table view background color, and enables an
@@ -121,6 +115,13 @@ typedef NS_ENUM(NSUInteger, HBAppearanceSettingsLargeTitleStyle) {
 ///
 /// @return By default, YES.
 @property (nonatomic, assign) BOOL translucentNavigationBar;
+
+/// Whether to show the shadow (separator line) at the bottom of the navigation bar.
+///
+/// Requires iOS 13 or later.
+///
+/// @return By default, YES.
+@property (nonatomic, assign) BOOL showsNavigationBarShadow;
 
 /// Whether to use a large title on iOS 11 and newer. Set this property to a value from
 /// HBAppearanceSettingsLargeTitleStyle.

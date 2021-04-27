@@ -1,0 +1,11 @@
+framework module Alderis {
+  umbrella header "Alderis.h"
+
+  export *
+  module * { export * }
+}
+
+module Alderis.Swift {
+    header "Alderis-Swift.h"
+    requires objc
+}

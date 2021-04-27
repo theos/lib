@@ -1,0 +1,12 @@
+---
+archs:                 [ armv7, arm64, arm64e ]
+platform:              ios
+install-name:          "/usr/lib/libcolorpicker.dylib"
+current-version:       0
+compatibility-version: 0
+exports:
+  - archs:                [ armv7, arm64, arm64e ]
+    symbols:              [ _LCPParseColorString, _colorFromDefaultsWithKey ]
+    objc-classes:         [ _HBColorPickerTableCell, _PFColorAlert, _PFColorCell,
+                            _PFLiteColorCell, _PFSimpleLiteColorCell ]
+...
