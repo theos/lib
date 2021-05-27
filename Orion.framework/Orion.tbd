@@ -1,6 +1,6 @@
 --- !tapi-tbd-v3
 archs:           [ arm64, arm64e ]
-uuids:           [ 'arm64: C45DB400-45AB-3832-B031-19C4FBE5D213', 'arm64e: 9244D1C0-F3AE-310E-921B-C33000536F3F' ]
+uuids:           [ 'arm64: 6A1B133D-EBF6-3D8D-944E-D971BEF9E799', 'arm64e: BD5AF6C7-D72A-3937-9F58-AD51362490AC' ]
 platform:        ios
 install-name:    '/Library/Frameworks/Orion.framework/Orion'
 swift-abi-version: 7
