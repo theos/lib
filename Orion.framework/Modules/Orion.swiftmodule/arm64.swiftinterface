@@ -97,14 +97,14 @@ extension _GlueClassHookTrampoline {
     nonmutating set
   }
 }
-public protocol OptionalProtocol {
+public protocol _OptionalProtocol {
   associatedtype Wrapped
-  init(optional: Self.Wrapped?)
+  init(_orionOptional: Self.Wrapped?)
 }
-extension Optional : Orion.OptionalProtocol {
-  public init(optional: Wrapped?)
+extension Optional : Orion._OptionalProtocol {
+  public init(_orionOptional: Wrapped?)
 }
-extension Ivars where IvarType : Orion.OptionalProtocol, IvarType.Wrapped : AnyObject {
+extension Ivars where IvarType : Orion._OptionalProtocol, IvarType.Wrapped : AnyObject {
   public enum WeakStorage {
     case weak
     public static func == (a: Orion.Ivars<IvarType>.WeakStorage, b: Orion.Ivars<IvarType>.WeakStorage) -> Swift.Bool
@@ -115,7 +115,7 @@ extension Ivars where IvarType : Orion.OptionalProtocol, IvarType.Wrapped : AnyO
   }
   public init(_ object: Swift.AnyObject, _ storage: Orion.Ivars<IvarType>.WeakStorage)
 }
-extension Ivars where IvarType : Orion.OptionalProtocol, IvarType.Wrapped : AnyObject {
+extension Ivars where IvarType : Orion._OptionalProtocol, IvarType.Wrapped : AnyObject {
   public subscript(safelyAccessing ivarName: Swift.String) -> IvarType? {
     get
     nonmutating set
@@ -131,7 +131,7 @@ public protocol Tweak {
   static func handleError(_ error: Orion.OrionHookError)
 }
 extension Tweak {
-  public static func activate<BackendType>(backend: BackendType, hooks: [Orion._GlueAnyHook.Type]) where BackendType : Orion.Backend
+  public static func _activate<BackendType>(backend: BackendType, hooks: [Orion._GlueAnyHook.Type]) where BackendType : Orion.Backend
   public func tweakDidActivate()
   public static func handleErrorDefault(_ error: Orion.OrionHookError) -> Swift.Never
   public static func handleError(_ error: Orion.OrionHookError)
@@ -141,7 +141,7 @@ public protocol TweakWithBackend : Orion.Tweak {
   static var backend: Self.BackendType { get }
 }
 extension TweakWithBackend {
-  public static func activate(hooks: [Orion._GlueAnyHook.Type])
+  public static func _activate(hooks: [Orion._GlueAnyHook.Type])
 }
 public struct DefaultTweak : Orion.Tweak {
   public init()
@@ -159,11 +159,11 @@ public protocol FunctionHookProtocol : AnyObject, Orion.AnyHook {
   static var target: Orion.Function { get }
   init()
 }
-open class FunctionHookClass {
+open class _FunctionHookClass {
   required public init()
   @objc deinit
 }
-public typealias FunctionHook = Orion.FunctionHookClass & Orion.FunctionHookProtocol
+public typealias FunctionHook = Orion._FunctionHookClass & Orion.FunctionHookProtocol
 extension FunctionHookProtocol {
   @_transparent public var orig: Self {
     @_transparent get {
@@ -312,12 +312,12 @@ extension ClassHookProtocol {
   }
   public func deinitializer() -> Orion.DeinitPolicy
 }
-@objcMembers open class ClassHookClass<Target> where Target : AnyObject {
+@objcMembers open class _ClassHookClass<Target> where Target : AnyObject {
   final public let target: Target
   required public init(target: Target)
   @objc deinit
 }
-public typealias ClassHook<Target> = Orion.ClassHookClass<Target> & Orion.ClassHookProtocol where Target : AnyObject
+public typealias ClassHook<Target> = Orion.ClassHookProtocol & Orion._ClassHookClass<Target> where Target : AnyObject
 extension ClassHookProtocol {
   @_transparent public var orig: Self {
     @_transparent get {
