@@ -1,0 +1,11 @@
+---
+archs:                 [ arm64, arm64e ]
+platform:              ios
+install-name:          "/usr/lib/libsparkapplist.dylib"
+current-version:       0
+compatibility-version: 0
+exports:
+  - archs:                [ arm64, arm64e ]
+    objc-classes:         [ _SparkAppItem, _SparkAppList, _SparkAppListCell,
+                            _SparkAppListTableViewController ]
+...

@@ -1,0 +1,24 @@
+---
+archs:                 [ arm64, arm64e ]
+platform:              ios
+install-name:          "/usr/lib/libsparkcolourpicker.dylib"
+current-version:       0
+compatibility-version: 0
+exports:
+  - archs:                [ arm64, arm64e ]
+    objc-classes:         [ _SCPFavouriteCollectionViewCell,
+                            _SparkBrightnessGradientView,
+                            _SparkColourGradientView, _SparkColourGridView,
+                            _SparkColourLabel, _SparkColourPickerCell,
+                            _SparkColourPickerCellViewController,
+                            _SparkColourPickerFavouritesView,
+                            _SparkColourPickerPreviewView,
+                            _SparkColourPickerSlider, _SparkColourPickerUtils,
+                            _SparkColourPickerView, _SparkColourSlider ]
+    objc-ivars:           [ _SparkBrightnessGradientView.cursorColour,
+                            _SparkBrightnessGradientView.cursorWidth,
+                            _SparkColourGradientView.cursorColour,
+                            _SparkColourGradientView.cursorWidth,
+                            _SparkColourSlider.cursorColour,
+                            _SparkColourSlider.cursorWidth ]
+...
