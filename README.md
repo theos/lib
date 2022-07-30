@@ -3,7 +3,7 @@ Libraries included with Theos for easy compilation of most projects out of the b
 
 This repo uses **.tbd** files, a plain text format that contains the minimum information needed for linking. These are supported as of clang 700 (Xcode 7) and are used in iOS 9.0 and newer SDKs.
 
-TBDs can be generated using either clang’s own [`tapi`](https://github.com/tpoechtrager/apple-libtapi#readme) tool (`xcrun tapi` on macOS), or the community-developed [`tbd`](https://github.com/inoahdev/tbd).
+TBDs can be generated using either clang’s own [`tapi`](https://github.com/tpoechtrager/apple-libtapi#readme) tool, or the community-developed [`tbd`](https://github.com/inoahdev/tbd).
 
 ## Contributions are welcome!
 Please contribute any libraries that would be useful to the wider community – whether your own library, or someone else’s. Make sure you follow the code rules below.
