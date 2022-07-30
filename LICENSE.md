@@ -7,6 +7,9 @@ The licenses of each library on this repo are listed as follows.
 ### ashikase
 * TechSupport: [GNU LGPL, version 3.0, Apache License, version 2.0](https://github.com/ashikase/TechSupport/blob/master/LICENSE)
 
+### CoolStar
+* libhooker & libblackjack: [3-Clause BSD License](http://opensource.org/licenses/BSD-3-Clause)
+
 ### HASHBANG Productions
 * Cephei: [Apache License, version 2.0](https://github.com/hbang/libcephei/blob/master/LICENSE.md)
 * Opener: [Apache License, version 2.0](https://github.com/hbang/libopener/blob/master/LICENSE.md)
@@ -20,6 +23,10 @@ The licenses of each library on this repo are listed as follows.
 ### SaurikIT
 * Cycript: [GNU AGPL, version 3.0](http://gitweb.saurik.com/cycript.git/blob/HEAD:/COPYING)
 * Cydia Substrate: [3-Clause BSD License](http://opensource.org/licenses/BSD-3-Clause)
+
+### SparkDev
+* libSparkAppList: [WTFPL v2.0](https://github.com/SparkDev97/libSparkAppList/blob/master/LICENSE.md)
+* libSparkColourPicker: [WTFPL v2.0](https://github.com/SparkDev97/libSparkColourPicker/blob/master/LICENSE.md)
 
 ### Theos
 * Orion: [MIT License](https://github.com/theos/orion/blob/master/LICENSE.md)
