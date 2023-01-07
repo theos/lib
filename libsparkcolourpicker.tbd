@@ -1,7 +1,7 @@
 ---
 archs:                 [ arm64, arm64e ]
 platform:              ios
-install-name:          "/usr/lib/libsparkcolourpicker.dylib"
+install-name:          "@rpath/libsparkcolourpicker.dylib"
 current-version:       0
 compatibility-version: 0
 exports:

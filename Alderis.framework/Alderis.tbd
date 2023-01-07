@@ -1,7 +1,7 @@
 ---
 archs:                 [ arm64, arm64e ]
 platform:              ios
-install-name:          /Library/Frameworks/Alderis.framework/Alderis
+install-name:          '@rpath/Alderis.framework/Alderis'
 current-version:       1
 compatibility-version: 1
 exports:

@@ -1,7 +1,7 @@
 ---
 archs:                 [ armv7, arm64, arm64e ]
 platform:              ios
-install-name:          /usr/lib/libactivator.dylib
+install-name:          '@rpath/libactivator.dylib'
 current-version:       0
 compatibility-version: 0
 objc-constraint:       retain_release

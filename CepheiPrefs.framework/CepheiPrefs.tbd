@@ -1,7 +1,7 @@
 ---
 archs:                 [ armv7, arm64, arm64e ]
 platform:              ios
-install-name:          "/Library/Frameworks/CepheiPrefs.framework/CepheiPrefs"
+install-name:          "@rpath/CepheiPrefs.framework/CepheiPrefs"
 current-version:       0
 compatibility-version: 0
 exports:

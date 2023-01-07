@@ -1,7 +1,7 @@
 ---
 archs:                 [ armv7, arm64, arm64e ]
 platform:              ios
-install-name:          /usr/lib/libprefs.dylib
+install-name:          '@rpath/libprefs.dylib'
 current-version:       2.2.3
 compatibility-version: 2.2
 objc-constraint:       retain_release
