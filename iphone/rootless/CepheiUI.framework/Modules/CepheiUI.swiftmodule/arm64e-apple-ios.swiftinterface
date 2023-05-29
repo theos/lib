@@ -1,0 +1,23 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target arm64e-apple-ios15.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -O -module-name CepheiUI
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+public protocol ColorPropertyListValue {
+}
+extension Swift.String : CepheiUI.ColorPropertyListValue {
+}
+extension Swift.Array : CepheiUI.ColorPropertyListValue where Element : Swift.FixedWidthInteger {
+}
+extension UIKit.UIColor {
+  @nonobjc convenience public init?(propertyListValue: CepheiUI.ColorPropertyListValue?)
+  @objc(hb_initWithPropertyListValue:) convenience dynamic public init?(_propertyListValueObjC propertyListValue: Any?)
+  @objc(hb_colorWithPropertyListValue:) dynamic public class func _colorWithPropertyListValueObjC(_ propertyListValue: Any?) -> UIKit.UIColor?
+  @nonobjc convenience public init(interfaceStyleVariants variants: [UIKit.UIUserInterfaceStyle : UIKit.UIColor])
+  @objc(hb_initWithInterfaceStyleVariants:) convenience dynamic public init(_interfaceStyleVariantsObjC variants: [Foundation.NSNumber : UIKit.UIColor])
+  @objc(hb_colorWithInterfaceStyleVariants:) dynamic public class func _colorWithInterfaceStyleVariantsObjC(_ variants: [Foundation.NSNumber : UIKit.UIColor]) -> UIKit.UIColor
+  @objc(hb_colorWithDarkInterfaceVariant) dynamic public func _withDarkInterfaceVariantObjC() -> UIKit.UIColor
+  @objc(hb_colorWithDarkInterfaceVariant:) dynamic public func withDarkInterfaceVariant(_ darkColor: UIKit.UIColor? = nil) -> UIKit.UIColor
+}

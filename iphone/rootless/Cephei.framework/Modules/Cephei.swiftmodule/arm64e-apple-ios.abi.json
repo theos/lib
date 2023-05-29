@@ -1,0 +1,240 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Cephei"
+      },
+      {
+        "kind": "Import",
+        "name": "os.log",
+        "printedName": "os.log",
+        "declKind": "Import",
+        "moduleName": "Cephei"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Command",
+        "printedName": "Command",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "executeSync",
+            "printedName": "executeSync(_:arguments:status:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.UnsafeMutablePointer<Swift.Int32>?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UnsafeMutablePointer",
+                    "printedName": "Swift.UnsafeMutablePointer<Swift.Int32>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int32",
+                        "printedName": "Swift.Int32",
+                        "usr": "s:s5Int32V"
+                      }
+                    ],
+                    "usr": "s:Sp"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@Cephei@objc(cs)HBCommand(cm)executeSync:arguments:status:",
+            "mangledName": "$s6Cephei7CommandC11executeSync_9arguments6statusS2S_SaySSGSgSpys5Int32VGSgtFZ",
+            "moduleName": "Cephei",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "DiscardableResult"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Command",
+                "printedName": "Cephei.Command",
+                "usr": "c:@M@Cephei@objc(cs)HBCommand"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@Cephei@objc(cs)HBCommand(im)init",
+            "mangledName": "$s6Cephei7CommandCACycfc",
+            "moduleName": "Cephei",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@Cephei@objc(cs)HBCommand",
+        "mangledName": "$s6Cephei7CommandC",
+        "moduleName": "Cephei",
+        "objc_name": "HBCommand",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "Command.swift",
+      "kind": "StringLiteral",
+      "offset": 547,
+      "length": 17,
+      "value": "\"ws.hbang.common\""
+    },
+    {
+      "filePath": "Command.swift",
+      "kind": "StringLiteral",
+      "offset": 576,
+      "length": 9,
+      "value": "\"Command\""
+    },
+    {
+      "filePath": "Command.swift",
+      "kind": "StringLiteral",
+      "offset": 616,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "Command.swift",
+      "kind": "StringLiteral",
+      "offset": 688,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "Command.swift",
+      "kind": "Array",
+      "offset": 730,
+      "length": 6,
+      "value": "[0, 0]"
+    },
+    {
+      "filePath": "Command.swift",
+      "kind": "StringLiteral",
+      "offset": 380,
+      "length": 7,
+      "value": "\"Cephei.Command\""
+    }
+  ]
+}
