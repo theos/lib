@@ -28,6 +28,9 @@ The licenses of each library on this repo are listed as follows.
 * libSparkAppList: [WTFPL v2.0](https://github.com/SparkDev97/libSparkAppList/blob/master/LICENSE.md)
 * libSparkColourPicker: [WTFPL v2.0](https://github.com/SparkDev97/libSparkColourPicker/blob/master/LICENSE.md)
 
+### Theos
+* Orion: [MIT License](https://github.com/theos/orion/blob/master/LICENSE.md)
+
 ### Other
 Files in this repo that aren’t copied or generated from elsewhere are released into the Public Domain.
 

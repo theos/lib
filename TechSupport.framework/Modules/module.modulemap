@@ -1,0 +1,6 @@
+framework module TechSupport {
+  umbrella header "TechSupport.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,11 @@
+framework module Orion {
+  umbrella header "Orion.h"
+
+  export *
+  module * { export * }
+}
+
+module Orion.Swift {
+    header "Orion-Swift.h"
+    requires objc
+}

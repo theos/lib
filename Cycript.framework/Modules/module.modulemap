@@ -1,0 +1,6 @@
+framework module Cycript {
+  umbrella header "Cycript.h"
+
+  export *
+  module * { export * }
+}

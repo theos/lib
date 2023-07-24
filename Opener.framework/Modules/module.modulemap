@@ -1,0 +1,6 @@
+framework module Opener {
+  umbrella header "Opener.h"
+
+  export *
+  module * { export * }
+}
