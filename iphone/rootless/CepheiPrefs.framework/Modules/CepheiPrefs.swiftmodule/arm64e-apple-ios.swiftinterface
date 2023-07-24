@@ -1,0 +1,133 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target arm64e-apple-ios15.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -O -module-name CepheiPrefs
+import Cephei
+@_exported import CepheiPrefs_ObjC
+import CepheiUI
+import CryptoKit
+import Foundation
+import MessageUI
+import MobileCoreServices
+import MobileIcons
+import Preferences
+import SafariServices
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import os.log
+import os
+extension CepheiPrefs_ObjC.AboutListController {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public var specifierPlist: Swift.String? {
+    @objc get
+  }
+  @objc(hb_supportEmailAddress) @_Concurrency.MainActor(unsafe) public static var supportEmailAddress: Swift.String? {
+    @objc get
+  }
+  @objc(hb_supportEmailAddress) @_Concurrency.MainActor(unsafe) dynamic public var supportEmailAddress: Swift.String? {
+    @objc get
+  }
+  @objc(hb_sendSupportEmail) @_Concurrency.MainActor(unsafe) dynamic public func _sendSupportEmailObjC()
+  @objc(hb_sendSupportEmail:) @_Concurrency.MainActor(unsafe) dynamic public func sendSupportEmail(_ sender: Preferences.PSSpecifier? = nil)
+}
+@_inheritsConvenienceInitializers @objc(HBAppearanceSettings) public class AppearanceSettings : ObjectiveC.NSObject {
+  @objc(HBAppearanceSettingsLargeTitleStyle) public enum LargeTitleStyle : Swift.UInt {
+    case rootOnly
+    case always
+    case never
+    public init?(rawValue: Swift.UInt)
+    public typealias RawValue = Swift.UInt
+    public var rawValue: Swift.UInt {
+      get
+    }
+  }
+  @objc public var tintColor: UIKit.UIColor?
+  @objc public var userInterfaceStyle: UIKit.UIUserInterfaceStyle
+  @objc public var navigationBarTintColor: UIKit.UIColor?
+  @objc public var navigationBarTitleColor: UIKit.UIColor?
+  @objc public var navigationBarBackgroundColor: UIKit.UIColor?
+  @objc public var statusBarStyle: UIKit.UIStatusBarStyle
+  @objc public var showsNavigationBarShadow: Swift.Bool
+  @objc public var largeTitleStyle: CepheiPrefs.AppearanceSettings.LargeTitleStyle
+  @objc public var tableViewBackgroundColor: UIKit.UIColor?
+  @objc public var tableViewCellTextColor: UIKit.UIColor?
+  @objc public var tableViewCellBackgroundColor: UIKit.UIColor?
+  @objc public var tableViewCellSeparatorColor: UIKit.UIColor?
+  @objc public var tableViewCellSelectionColor: UIKit.UIColor?
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension CepheiPrefs.AppearanceSettings : Foundation.NSCopying {
+  @objc dynamic public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+}
+@_hasMissingDesignatedInitializers @objc(HBContactViewController) @_Concurrency.MainActor(unsafe) public class ContactViewController : CepheiPrefs_ObjC.ListController {
+  @objc @_Concurrency.MainActor(unsafe) public var to: Swift.String?
+  @objc @_Concurrency.MainActor(unsafe) public var subject: Swift.String?
+  @objc @_Concurrency.MainActor(unsafe) public var messageBody: Swift.String?
+  @objc @_Concurrency.MainActor(unsafe) public var preferencesPlist: Foundation.Data?
+  @objc @_Concurrency.MainActor(unsafe) public var preferencesIdentifier: Swift.String?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @objc deinit
+}
+extension CepheiPrefs.ContactViewController : MessageUI.MFMailComposeViewControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func mailComposeController(_ controller: MessageUI.MFMailComposeViewController, didFinishWith result: MessageUI.MFMailComposeResult, error: Swift.Error?)
+}
+extension CepheiPrefs_ObjC.ListController {
+  @objc(hb_respring:) @_Concurrency.MainActor(unsafe) dynamic public func respring(specifier: Preferences.PSSpecifier?)
+  @objc(hb_respringAndReturn:) @_Concurrency.MainActor(unsafe) dynamic public func respringAndReturn(specifier: Preferences.PSSpecifier?)
+  @objc(hb_openURL:) @_Concurrency.MainActor(unsafe) dynamic public func openURL(specifier: Preferences.PSSpecifier?)
+  @objc(hb_openPackage:) @_Concurrency.MainActor(unsafe) dynamic public func openPackage(specifier: Preferences.PSSpecifier?)
+  @objc(hb_openMastodon:) @_Concurrency.MainActor(unsafe) dynamic public func openMastodon(specifier: Preferences.PSSpecifier?)
+}
+extension CepheiPrefs_ObjC.ListController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var specifiers: Foundation.NSMutableArray? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func loadSpecifiers(fromPlistName name: Swift.String, target: Preferences.PSListController?) -> Foundation.NSMutableArray?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func loadSpecifiers(fromPlistName name: Swift.String, target: Preferences.PSListController?, bundle: Foundation.Bundle?) -> Foundation.NSMutableArray?
+}
+@objc(HBMastodonAPIClientDelegate) public protocol MastodonAPIClientDelegate : ObjectiveC.NSObjectProtocol {
+  @objc func mastodonAPIClientDidLoad(account: Swift.String, actualAccount: Swift.String, url: Foundation.URL?, profileImage: UIKit.UIImage?)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(HBMastodonAPIClient) public class MastodonAPIClient : ObjectiveC.NSObject {
+  @objc(sharedInstance) public static let shared: CepheiPrefs.MastodonAPIClient
+  @objc public func queueLookup(forAccount account: Swift.String)
+  @objc public func addDelegate(_ delegate: CepheiPrefs.MastodonAPIClientDelegate, forAccount account: Swift.String)
+  @objc public func removeDelegate(_ delegate: CepheiPrefs.MastodonAPIClientDelegate, forAccount account: Swift.String?)
+  @objc deinit
+}
+extension Preferences.PSListController {
+  @nonobjc @_Concurrency.MainActor(unsafe) public var appearanceSettings: CepheiPrefs.AppearanceSettings? {
+    get
+    set
+  }
+}
+@_inheritsConvenienceInitializers @objc(HBPackageUtils) public class PackageUtils : ObjectiveC.NSObject {
+  @objc public class func shellEscape(_ input: [Swift.String]) -> Swift.String
+  @objc public class func getFields(_ fields: [Swift.String], forPackage package: Swift.String) -> [Swift.String : Swift.String]?
+  @objc public class func getField(_ field: Swift.String, forPackage package: Swift.String) -> Swift.String?
+  @objc public class func resolvePackage(forFile file: Swift.String) -> Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension CepheiPrefs_ObjC.RootListController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func loadView()
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(HBSpinnerTableCell) @_Concurrency.MainActor(unsafe) public class SpinnerTableCell : CepheiPrefs_ObjC.TintedTableCell {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var cellEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(HBSymbolRenderer) public class SymbolRenderer : ObjectiveC.NSObject {
+  @objc public static func makeIcon(backgroundColor: UIKit.UIColor, isBig: Swift.Bool, glyph: UIKit.UIImage?) -> UIKit.UIImage
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension CepheiPrefs.AppearanceSettings.LargeTitleStyle : Swift.Equatable {}
+extension CepheiPrefs.AppearanceSettings.LargeTitleStyle : Swift.Hashable {}
+extension CepheiPrefs.AppearanceSettings.LargeTitleStyle : Swift.RawRepresentable {}
