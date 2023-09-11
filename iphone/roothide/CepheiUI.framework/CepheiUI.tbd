@@ -1,0 +1,27 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ arm64-ios, arm64e-ios ]
+uuids:
+  - target:          arm64-ios
+    value:           77EEDB30-EABE-3D83-AEA2-5BEB961F57A0
+  - target:          arm64e-ios
+    value:           6B2B2D0F-0311-34D0-9B13-2C9F41B342AA
+install-name:    '@loader_path/.jbroot/Library/Frameworks/CepheiUI.framework/CepheiUI'
+current-version: 0
+compatibility-version: 0
+swift-abi-version: 7
+exports:
+  - targets:         [ arm64-ios, arm64e-ios ]
+    symbols:         [ '_$s8CepheiUI22ColorPropertyListValueMp', '_$sSS8CepheiUI22ColorPropertyListValueAAMc', 
+                       '_$sSS8CepheiUI22ColorPropertyListValueAAWP', '_$sSayxG8CepheiUI22ColorPropertyListValueABs17FixedWidthIntegerRzlMc', 
+                       '_$sSo7UIColorC8CepheiUIE17propertyListValueABSgAC013ColorPropertyeF0_pSg_tcfC', 
+                       '_$sSo7UIColorC8CepheiUIE22_propertyListValueObjCABSgypSg_tcfC', 
+                       '_$sSo7UIColorC8CepheiUIE22_propertyListValueObjCABSgypSg_tcfc', 
+                       '_$sSo7UIColorC8CepheiUIE22interfaceStyleVariantsABSDySo015UIUserInterfaceE0VABG_tcfC', 
+                       '_$sSo7UIColorC8CepheiUIE24withDarkInterfaceVariantyA2BSgF', 
+                       '_$sSo7UIColorC8CepheiUIE27_interfaceStyleVariantsObjCABSDySo8NSNumberCABG_tcfC', 
+                       '_$sSo7UIColorC8CepheiUIE27_interfaceStyleVariantsObjCABSDySo8NSNumberCABG_tcfc', 
+                       '_$sSo7UIColorC8CepheiUIE29_withDarkInterfaceVariantObjCAByF', 
+                       '_$sSo7UIColorC8CepheiUIE31_colorWithPropertyListValueObjCyABSgypSgFZ', 
+                       '_$sSo7UIColorC8CepheiUIE36_colorWithInterfaceStyleVariantsObjCyABSDySo8NSNumberCABGFZ' ]
+...

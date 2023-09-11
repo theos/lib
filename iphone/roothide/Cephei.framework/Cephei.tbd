@@ -1,0 +1,24 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ arm64-ios, arm64e-ios ]
+uuids:
+  - target:          arm64-ios
+    value:           9A32FD2A-1D0C-3DE6-AC49-D0897D66D86A
+  - target:          arm64e-ios
+    value:           15FF623F-353B-39E3-83CA-012FA5CA9C97
+install-name:    '@loader_path/.jbroot/Library/Frameworks/Cephei.framework/Cephei'
+current-version: 0
+compatibility-version: 0
+swift-abi-version: 7
+exports:
+  - targets:         [ arm64-ios, arm64e-ios ]
+    symbols:         [ '_$s6Cephei7CommandC11executeSync_9arguments6statusS2S_SaySSGSgSpys5Int32VGSgtFZTj', 
+                       '_$s6Cephei7CommandC11executeSync_9arguments6statusS2S_SaySSGSgSpys5Int32VGSgtFZTq', 
+                       '_$s6Cephei7CommandCACycfC', '_$s6Cephei7CommandCACycfc', 
+                       '_$s6Cephei7CommandCMa', '_$s6Cephei7CommandCMn', '_$s6Cephei7CommandCMo', 
+                       '_$s6Cephei7CommandCMu', '_$s6Cephei7CommandCN', '_$s6Cephei7CommandCfD', 
+                       _HBOutputForShellCommand, _HBOutputForShellCommandWithReturnCode, 
+                       _HBPreferencesDidChangeNotification ]
+    objc-classes:    [ HBCommand, HBPreferences, HBPreferencesCore, HBPreferencesIPC, 
+                       HBRespringController ]
+...
