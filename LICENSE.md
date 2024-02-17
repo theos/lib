@@ -14,6 +14,9 @@ The licenses of each library on this repo are listed as follows.
 * Cephei: [Apache License, version 2.0](https://github.com/hbang/libcephei/blob/master/LICENSE.md)
 * Opener: [Apache License, version 2.0](https://github.com/hbang/libopener/blob/master/LICENSE.md)
 
+### Opa334
+* libroot: [MIT](https://github.com/opa334/libroot/blob/main/LICENSE.md)
+
 ### Ryan Petrich
 * libactivator: Closed source - used with permission
 * libapplist: [GNU LGPL, version 2.1](https://github.com/rpetrich/AppList/blob/master/LICENSE)
