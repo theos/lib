@@ -39,13 +39,7 @@
 #define SUBSTRATE_H_
 
 #ifdef __APPLE__
-#ifdef __cplusplus
-extern "C" {
-#endif
 #include <mach-o/nlist.h>
-#ifdef __cplusplus
-}
-#endif
 
 #include <objc/runtime.h>
 #include <objc/message.h>
