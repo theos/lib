@@ -1,4 +1,4 @@
----
+--- !tapi-tbd-v3
 archs:                 [ armv7, arm64, arm64e ]
 platform:              ios
 install-name:          "/Library/Frameworks/Cephei.framework/Cephei"

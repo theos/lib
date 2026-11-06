@@ -1,4 +1,4 @@
----
+--- !tapi-tbd-v3
 archs:           [ armv7, armv7s, arm64, arm64e ]
 platform:        ios
 install-name:    '@rpath/CydiaSubstrate.framework/CydiaSubstrate'
