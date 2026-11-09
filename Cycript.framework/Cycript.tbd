@@ -1,9 +1,9 @@
---- !tapi-tbd
-tbd-version:     4
-targets:         [ armv7-ios, armv7s-ios, arm64-ios, arm64e-ios, i386-ios-simulator, x86_64-ios-simulator ]
-install-name:    '/Library/Frameworks/Cycript.framework/Cycript'
+---
+archs:           [ armv7, armv7s, arm64, arm64e, i386, x86_64 ]
+platform:        ios
+install-name:    /Library/Frameworks/Cycript.framework/Cycript
 current-version: 275.0
 exports:
-  - targets:         [ armv7-ios, armv7s-ios, arm64-ios, arm64e-ios, i386-ios-simulator, x86_64-ios-simulator ]
+  - archs:            [ armv7, armv7s, arm64, arm64e, i386, x86_64 ]
     symbols:          [ _CYListenServer ]
 ...
